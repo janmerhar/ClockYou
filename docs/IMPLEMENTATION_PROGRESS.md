@@ -45,12 +45,9 @@ RED: storage tests ran against placeholder storage and failed 4/5 checks for Hom
 
 Commit: `feat(task-02): store home and optional away alarm time`. Actual SHA/remote verification follows the commit in the execution ledger/next task entry. Scheduling integration remains Task 05.
 
-## Remaining tasks
+## Execution status
 
-3. Sparse native detection, bounded capture and classification.
-4. Home CRUD screen, location rule sheet and draft/permission behavior.
-5. Serialized scheduling, commitments, delivery and recovery.
-6. Device verification, independent review, APK and handoff.
+Tasks 01–05 are implemented, tested and pushed. Task 06's emulator/build/review/APK handoff is recorded below. Physical-phone and overnight acceptance remain open; they are not claimed complete.
 
 ## Task 03 — Native detection
 
@@ -95,3 +92,19 @@ Implementation rulings required by the specification:
 - Bring `LocationAlarmDeviceTest` forward from Task 06 to run Task 05's mandatory native ringing checks, then reuse it for final validation.
 
 Commit: `feat(task-05): integrate safe location-aware alarm scheduling`. Whole-change review, additional native recovery/permission checks, actual reboot verification and final APK handoff remain Task 06.
+
+## Task 06 — Verification and handoff
+
+Task 05 checkpoint: local/GitHub `master` matched `85645ba5139d4e216aac0c0a2cb0c859753f9b12`.
+
+One independent whole-change review found no Critical findings, two Important asynchronous lifecycle defects and one Minor missed-notification text issue. Both Important findings had failing regressions before fixes: service continuation/Snooze stopping a newer start, and placeholder snooze duration/superseded Activity loads. Stops now identify the service start; loaded ringing controls are keyed to the occurrence and obsolete loads are cancelled. Tests use delayed real Room reads and assert the displayed and scheduled non-default snooze. Three new configuration-unaware resource errors from callbacks were corrected using resource IDs resolved by Compose.
+
+Final verification: all 51 unit tests pass; debug and test APKs build. The required combined build/unit/lint command exits 1 solely because of the identical 325 inherited lint errors; no new errors. Warnings 144 versus 139 baseline, hints 10. The full connected command exits 0; five native feature checks pass. Its two deliberately phase-gated reboot methods emit assumptions (the UTP XML labels these as failures); both were subsequently exercised explicitly with **OK (1 test)** each. Native Home/Away transitions/freeze, ordinary and Unknown alarm delivery, snooze/dismiss and both migration layouts pass.
+
+Process termination was confirmed by PID disappearance while the exact queue remained. Exact-permission denial cleared the queue; granting restored the saved trigger without an app launch. Background-location denial preserved a frozen choice after reconciliation. An actual emulator reboot restored expected trigger 1793620620000 **before reopening the app or instrumentation**, and the persisted frozen record matched. Initial reboot setup lost an unflushed shell app-op; flushing/reloading system app-op settings before repeating resolved the fixture issue. No production change was required. Fixture alarms/providers were removed afterward.
+
+See [HOME_AWAY_POC.md](HOME_AWAY_POC.md) for setup, environment, complete counts, limitations, and [Task06 evidence](validation/task06/) for raw reports, review, rulings and recovery snapshots. Final APK SHA-256: `19ed5c48201afdd345524379dad55d8634fb1d1fd10085f90ad079e241448222`. The artifact's adjacent manifest is written after commit/push and records the actual final source SHA, avoiding a self-referential commit hash in this document.
+
+Deferred minor: missed Away timeout notification formats the Home definition time. Physical-phone, screen-off, real travel, actual speaker and overnight battery/delivery validation remain **unverified/open**. Broader existing broadcast security and unrelated legacy behavior remain outside this scoped rebuild. This is a partially device-validated POC, not completed physical-device acceptance.
+
+Commit: `test(task-06): verify alarms and document the proof of concept`. The delivery manifest and execution state record its actual local/remote SHA after push.

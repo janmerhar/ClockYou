@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnyro.clock.AlarmRingingUiTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-02T11:32:50.445Z" hostname="DESKTOP-172AU7B" time="2.043">
+  <properties/>
+  <testcase name="olderLoadCannotReplaceANewerRingingIntent" classname="com.bnyro.clock.AlarmRingingUiTest" time="1.824"/>
+  <testcase name="delayedLoadShowsConfiguredSnoozeAndSchedulesThatDuration" classname="com.bnyro.clock.AlarmRingingUiTest" time="0.214"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Intent = Intent { act=com.bnyro.clock.ALARM_ACTION pkg=com.bnyro.clock.debug (has extras) }; Matching wrappers: []
+Intent = Intent { act=com.bnyro.clock.ALARM_ACTION pkg=com.bnyro.clock.debug (has extras) }; Matching wrappers: []
+Intent = Intent { act=com.bnyro.clock.ALARM_ACTION pkg=com.bnyro.clock.debug (has extras) }; Matching wrappers: []
+Intent = Intent { act=com.bnyro.clock.ALARM_ACTION pkg=com.bnyro.clock.debug (has extras) }; Matching wrappers: []
+Intent = Intent { act=com.bnyro.clock.ALARM_ACTION pkg=com.bnyro.clock.debug (has extras) }; Matching wrappers: []
+]]></system-err>
+</testsuite>

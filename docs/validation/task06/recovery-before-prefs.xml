@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="location_runtime_sample">{&quot;latitude&quot;:0.01,&quot;longitude&quot;:0.0,&quot;accuracyMeters&quot;:10.0,&quot;timestampMillis&quot;:1793619437319}</string>
+    <long name="location_runtime_reboot_id" value="1" />
+    <string name="location_home">{&quot;latitude&quot;:0.0,&quot;longitude&quot;:0.0}</string>
+    <string name="location_runtime_occurrence_1">{&quot;date&quot;:20759,&quot;timeOfDay&quot;:46620000,&quot;configKey&quot;:&quot;45720000|46620000|0,1,2,3,4,5,6|20759|1|WEEK|DAY_OF_MONTH|null|DAY|null|1&quot;,&quot;freezeAtMillis&quot;:1793617920000,&quot;frozen&quot;:true}</string>
+    <long name="location_runtime_reboot_expected" value="1793620620000" />
+</map>

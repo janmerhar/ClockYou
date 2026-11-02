@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnyro.clock.LocationAlarmSchedulingTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-11-02T11:32:54.450Z" hostname="DESKTOP-172AU7B" time="0.007">
+  <properties/>
+  <testcase name="frozenChoiceSurvivesClockRollback" classname="com.bnyro.clock.LocationAlarmSchedulingTest" time="0.005"/>
+  <testcase name="frozenAwaySurvivesEastwardTimezoneChange" classname="com.bnyro.clock.LocationAlarmSchedulingTest" time="0.001"/>
+  <testcase name="dueCommitIsKeptForAutomaticDeliveryButRecoveryAdvances" classname="com.bnyro.clock.LocationAlarmSchedulingTest" time="0.0"/>
+  <testcase name="selectHomeAwayUnknownAndOff" classname="com.bnyro.clock.LocationAlarmSchedulingTest" time="0.0"/>
+  <testcase name="frozenAwaySurvivesWestwardTimezoneChangeWithoutAnInterveningCallback" classname="com.bnyro.clock.LocationAlarmSchedulingTest" time="0.001"/>
+  <testcase name="freezeAtEarlierTimeCutoff" classname="com.bnyro.clock.LocationAlarmSchedulingTest" time="0.0"/>
+  <testcase name="consumedAndSkippedDatesAreExcludedOnEveryCandidate" classname="com.bnyro.clock.LocationAlarmSchedulingTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

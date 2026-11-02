@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnyro.clock.LocationMonitoringTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-11-02T11:32:54.459Z" hostname="DESKTOP-172AU7B" time="30.377">
+  <properties/>
+  <testcase name="providerRecoveryAndRepeatedCallbacksKeepRecheckDeadline" classname="com.bnyro.clock.LocationMonitoringTest" time="0.071"/>
+  <testcase name="captureTimeoutRemovesListeners" classname="com.bnyro.clock.LocationMonitoringTest" time="30.041"/>
+  <testcase name="liveCaptureSuccessRemovesListeners" classname="com.bnyro.clock.LocationMonitoringTest" time="0.057"/>
+  <testcase name="deniedBackgroundUsesUnknownAndDisablingLastRuleStopsMonitoring" classname="com.bnyro.clock.LocationMonitoringTest" time="0.06"/>
+  <testcase name="registrationStopsWithoutHomeRuleOrBackgroundPermission" classname="com.bnyro.clock.LocationMonitoringTest" time="0.052"/>
+  <testcase name="foregroundCaptureAcceptsOnlyFreshAccurateFix" classname="com.bnyro.clock.LocationMonitoringTest" time="0.043"/>
+  <testcase name="captureCancellationRemovesListeners" classname="com.bnyro.clock.LocationMonitoringTest" time="0.05"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@2b9c0dd9], context=[android.app.ContextImpl@478c6eba], intentFilter=[android.content.IntentFilter@71cf0cf6]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@2b9c0dd9], context=[android.app.ContextImpl@478c6eba], intentFilter=[android.content.IntentFilter@71cf0cf6]]]
+Intent = Intent { act=com.bnyro.clock.LOCATION_UPDATE cmp=com.bnyro.clock.debug/com.bnyro.clock.util.location.HomeLocationReceiver (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@2b9c0dd9], context=[android.app.ContextImpl@478c6eba], intentFilter=[android.content.IntentFilter@71cf0cf6]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@2b9c0dd9], context=[android.app.ContextImpl@478c6eba], intentFilter=[android.content.IntentFilter@71cf0cf6]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@38284d52], context=[android.app.ContextImpl@7b779890], intentFilter=[android.content.IntentFilter@17d558d6]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@67c9b19c], context=[android.app.ContextImpl@66901c5e], intentFilter=[android.content.IntentFilter@4adaa749]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@52517030], context=[android.app.ContextImpl@1b3d6f96], intentFilter=[android.content.IntentFilter@4ce167de]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@28632b02], context=[android.app.ContextImpl@307bec9e], intentFilter=[android.content.IntentFilter@2032e7c6]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@1b729619], context=[android.app.ContextImpl@185740f5], intentFilter=[android.content.IntentFilter@674e067b]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@3cfad32], context=[android.app.ContextImpl@6096ca01], intentFilter=[android.content.IntentFilter@706a2b53]]]
+]]></system-err>
+</testsuite>

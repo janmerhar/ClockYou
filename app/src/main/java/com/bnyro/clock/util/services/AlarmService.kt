@@ -51,6 +51,7 @@ class AlarmService : Service() {
     private val notificationId = 5
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     private var latestStartId = 0
+    private var activeStartId = 0
     private var isPlaying = false
     private var vibrator: Vibrator? = null
     private var mediaPlayer: MediaPlayer? = null
@@ -66,14 +67,17 @@ class AlarmService : Service() {
             Log.d("AlarmService", "magga")
             val requestedId = intent?.getLongExtra(AlarmHelper.EXTRA_ID, -1) ?: -1
             if (requestedId != -1L && requestedId != currentAlarm?.id) return
+            if (intent?.hasExtra(AlarmHelper.EXTRA_TRIGGER_TIME) == true &&
+                intent.getLongExtra(AlarmHelper.EXTRA_TRIGGER_TIME, -1) != currentRingTime) return
             when (val action = intent?.getStringExtra(ACTION_EXTRA_KEY)) {
-                DISMISS_ACTION -> stopSelf()
+                DISMISS_ACTION -> stopSelf(activeStartId)
                 SNOOZE_ACTION -> {
                     val alarm = currentAlarm ?: return
                     val ringTime = currentRingTime ?: return
+                    val actionStartId = activeStartId
                     serviceScope.launch {
                         try { LocationAlarmCoordinator.snooze(this@AlarmService, alarm.id, ringTime, alarm.snoozeMinutes) }
-                        finally { if (currentAlarm?.id == alarm.id && currentRingTime == ringTime) stopSelf() }
+                        finally { stopSelf(actionStartId) }
                     }
                 }
                 ALERT_SHOWN_ACTION, ALERT_HIDDEN_ACTION -> {
@@ -122,7 +126,7 @@ class AlarmService : Service() {
             .setSmallIcon(R.drawable.ic_notification).setContentTitle(getString(R.string.alarm)).setSilent(true).build())
         serviceScope.launch {
             val alarmRepository = (application as App).container.alarmRepository
-            val alarm = alarmRepository.getAlarmById(id) ?: run { stopSelf(); return@launch }
+            val alarm = alarmRepository.getAlarmById(id) ?: run { stopSelf(startId); return@launch }
             if (startId != latestStartId) return@launch
             val trigger = intent?.getLongExtra(AlarmHelper.EXTRA_TRIGGER_TIME, System.currentTimeMillis())
                 ?: System.currentTimeMillis()
@@ -131,6 +135,7 @@ class AlarmService : Service() {
                 return@launch
             }
             currentRingTime = trigger
+            activeStartId = startId
             val notification = createNotification(this@AlarmService, alarm)
             startForeground(notificationId, notification)
 
@@ -188,7 +193,7 @@ class AlarmService : Service() {
                             .build()
                     )
                 }
-                stopSelf()
+                stopSelf(startId)
             }, alarmTimeoutMinutes * 60 * 1000L)
         }
         return START_STICKY

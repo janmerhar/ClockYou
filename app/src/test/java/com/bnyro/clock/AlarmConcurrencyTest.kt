@@ -36,6 +36,66 @@ import org.robolectric.shadows.ShadowAlarmManager
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35])
 class AlarmConcurrencyTest {
+    @Test fun lateMissingRowStopsOnlyItsOwnServiceStart() = runBlocking {
+        val app = ApplicationProvider.getApplicationContext<App>()
+        Preferences.instance.edit().clear().commit()
+        val main = shadowOf(Looper.getMainLooper())
+        val controller = Robolectric.buildService(AlarmService::class.java).create()
+        try {
+            main.idle()
+            controller.get().onStartCommand(Intent(app, AlarmService::class.java)
+                .putExtra(AlarmHelper.EXTRA_ID, -100L).putExtra(AlarmHelper.EXTRA_TRIGGER_TIME, 0L), 0, 1)
+            withTimeout(5_000) { while (main.isIdle) delay(10) }
+            val row = Alarm(time = 28_800_000, enabled = true)
+            val alarm = row.copy(id = app.container.alarmRepository.addAlarm(row))
+            val trigger = System.currentTimeMillis() - 1
+            LocationPreferences().saveProgress(alarm.id, LocationProgress(lastTrigger = trigger))
+            controller.get().onStartCommand(Intent(app, AlarmService::class.java)
+                .putExtra(AlarmHelper.EXTRA_ID, alarm.id).putExtra(AlarmHelper.EXTRA_TRIGGER_TIME, trigger), 0, 2)
+            main.idle()
+            assertEquals(1, shadowOf(controller.get()).stopSelfId)
+        } finally { controller.destroy() }
+    }
+
+    @Test fun lateSnoozeStopsOnlyItsActiveServiceStart() = runBlocking {
+        val app = ApplicationProvider.getApplicationContext<App>()
+        Preferences.instance.edit().clear().commit()
+        val main = shadowOf(Looper.getMainLooper())
+        val component = android.content.ComponentName(app, com.bnyro.clock.util.receivers.PreAlarmReceiver::class.java)
+        val oldState = app.packageManager.getComponentEnabledSetting(component)
+        app.packageManager.setComponentEnabledSetting(component, android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED, android.content.pm.PackageManager.DONT_KILL_APP)
+        val controller = Robolectric.buildService(AlarmService::class.java).create()
+        try {
+            ShadowAlarmManager.setCanScheduleExactAlarms(true)
+            val repository = app.container.alarmRepository
+            val first = Alarm(time = 28_800_000, enabled = true, snoozeMinutes = 1)
+            val a = first.copy(id = repository.addAlarm(first))
+            val b = first.copy(id = repository.addAlarm(first.copy()))
+            val trigger = System.currentTimeMillis() / 60_000 * 60_000
+            LocationPreferences().saveProgress(a.id, LocationProgress(lastTrigger = trigger))
+            LocationPreferences().saveProgress(b.id, LocationProgress(lastTrigger = trigger + 1))
+            shadowOf(app).clearNextStartedActivities()
+            main.idle()
+            controller.get().onStartCommand(Intent(app, AlarmService::class.java)
+                .putExtra(AlarmHelper.EXTRA_ID, a.id).putExtra(AlarmHelper.EXTRA_TRIGGER_TIME, trigger), 0, 1)
+            withTimeout(5_000) {
+                while (shadowOf(app).peekNextStartedActivity() == null) { main.idle(); delay(10) }
+            }
+            shadowOf(app).clearNextStartedActivities()
+            app.sendBroadcast(Intent(AlarmService.ALARM_INTENT_ACTION).setPackage(app.packageName)
+                .putExtra(AlarmService.ACTION_EXTRA_KEY, AlarmService.SNOOZE_ACTION))
+            main.idle()
+            withTimeout(5_000) { while (main.isIdle) delay(10) }
+            controller.get().onStartCommand(Intent(app, AlarmService::class.java)
+                .putExtra(AlarmHelper.EXTRA_ID, b.id).putExtra(AlarmHelper.EXTRA_TRIGGER_TIME, trigger + 1), 0, 2)
+            main.idle()
+            assertEquals(1, shadowOf(controller.get()).stopSelfId)
+        } finally {
+            controller.destroy()
+            app.packageManager.setComponentEnabledSetting(component, oldState, android.content.pm.PackageManager.DONT_KILL_APP)
+        }
+    }
+
     @Test fun deletionWhileServiceLoadsCannotStartStaleRinging() = runBlocking {
         val app = ApplicationProvider.getApplicationContext<App>()
         Preferences.instance.edit().clear().commit()

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnyro.clock.HomeLocationUiTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-02T11:32:52.496Z" hostname="DESKTOP-172AU7B" time="0.807">
+  <properties/>
+  <testcase name="failedCaptureRetainsHomeAndRemoveRequiresConfirmation" classname="com.bnyro.clock.HomeLocationUiTest" time="0.515"/>
+  <testcase name="captureIsPreviewUntilSaveAndUpdateReplacesHome" classname="com.bnyro.clock.HomeLocationUiTest" time="0.205"/>
+  <testcase name="permissionDenialShowsUnknownWithoutChangingHome" classname="com.bnyro.clock.HomeLocationUiTest" time="0.084"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@14c625ad], context=[android.app.ContextImpl@728ea7bd], intentFilter=[android.content.IntentFilter@7c5f3177]]]
+]]></system-err>
+</testsuite>

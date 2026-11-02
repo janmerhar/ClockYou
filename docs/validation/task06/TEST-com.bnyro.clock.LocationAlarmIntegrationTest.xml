@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnyro.clock.LocationAlarmIntegrationTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-11-02T11:32:53.308Z" hostname="DESKTOP-172AU7B" time="1.131">
+  <properties/>
+  <testcase name="recoverAfterBootClockAndPermissionGrant" classname="com.bnyro.clock.LocationAlarmIntegrationTest" time="0.09"/>
+  <testcase name="newAlarmAnchorsTodayWhenHomeHasPassedButAwayIsFuture" classname="com.bnyro.clock.LocationAlarmIntegrationTest" time="0.064"/>
+  <testcase name="fallbackNeverRequeuesSkippedDate" classname="com.bnyro.clock.LocationAlarmIntegrationTest" time="0.085"/>
+  <testcase name="dueCommitSurvivesReconcileBeforeDelivery" classname="com.bnyro.clock.LocationAlarmIntegrationTest" time="0.483"/>
+  <testcase name="ruleEditsAndRuleRemovalCannotReviveConsumedDate" classname="com.bnyro.clock.LocationAlarmIntegrationTest" time="0.112"/>
+  <testcase name="originalBroadcastDeliversOnceAfterStartupReconcile" classname="com.bnyro.clock.LocationAlarmIntegrationTest" time="0.084"/>
+  <testcase name="consumptionSnoozeDeleteAndEdit" classname="com.bnyro.clock.LocationAlarmIntegrationTest" time="0.123"/>
+  <testcase name="consumedWallDateDoesNotSkipNextDateAfterTimezoneChange" classname="com.bnyro.clock.LocationAlarmIntegrationTest" time="0.085"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@7297af7f], context=[android.app.ContextImpl@636f2c18], intentFilter=[android.content.IntentFilter@6533e1b5]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@5b0ea283], context=[android.app.ContextImpl@599394e3], intentFilter=[android.content.IntentFilter@56cb4487]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@483ca397], context=[android.app.ContextImpl@6bbc5a1d], intentFilter=[android.content.IntentFilter@62f672e]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@73ebc496], context=[android.app.ContextImpl@4b1c53a6], intentFilter=[android.content.IntentFilter@24c9fb21]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@4a8b9843], context=[android.app.ContextImpl@19d1be7d], intentFilter=[android.content.IntentFilter@a9b9687]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@469b5853], context=[android.app.ContextImpl@70b88e60], intentFilter=[android.content.IntentFilter@7a3fd957]]]
+Intent = Intent { cmp=com.bnyro.clock.debug/com.bnyro.clock.util.receivers.AlarmReceiver (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.receivers.AlarmReceiver@1c19821d], context=[android.app.ContextImpl@70b88e60], intentFilter=[android.content.IntentFilter@36f88a84]]]
+Intent = Intent { cmp=com.bnyro.clock.debug/com.bnyro.clock.util.receivers.AlarmReceiver (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.receivers.AlarmReceiver@1c19821d], context=[android.app.ContextImpl@70b88e60], intentFilter=[android.content.IntentFilter@36f88a84]]]
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@7ca9c648], context=[android.app.ContextImpl@31965c17], intentFilter=[android.content.IntentFilter@7d24509c]]]
+Intent = Intent { cmp=com.bnyro.clock.debug/com.bnyro.clock.util.receivers.PreAlarmReceiver (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.receivers.PreAlarmReceiver@71b8d2db], context=[android.app.ContextImpl@31965c17], intentFilter=[android.content.IntentFilter@62f804ce]]]
+Intent = Intent { cmp=com.bnyro.clock.debug/com.bnyro.clock.util.receivers.PreAlarmReceiver (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.receivers.PreAlarmReceiver@71b8d2db], context=[android.app.ContextImpl@31965c17], intentFilter=[android.content.IntentFilter@62f804ce]]]
+Intent = Intent { act=com.bnyro.clock.ALARM_ACTION pkg=com.bnyro.clock.debug (has extras) }; Matching wrappers: []
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@1adb9bb4], context=[android.app.ContextImpl@743ea184], intentFilter=[android.content.IntentFilter@4bafd408]]]
+]]></system-err>
+</testsuite>

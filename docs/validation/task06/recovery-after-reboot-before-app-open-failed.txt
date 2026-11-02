@@ -1,0 +1,636 @@
+Current Alarm Manager state:
+  Settings:
+    version=1
+    min_futurity=+5s0ms
+    min_interval=+1m0s0ms
+    max_interval=+365d0h0m0s0ms
+    min_window=+10m0s0ms
+    listener_timeout=+5s0ms
+    allow_while_idle_quota=72
+    allow_while_idle_window=+1h0m0s0ms
+    allow_while_idle_compat_quota=7
+    allow_while_idle_compat_window=+1h0m0s0ms
+    allow_while_idle_whitelist_duration=+10s0ms
+    max_alarms_per_uid=500
+    app_standby_window=+1h0m0s0ms
+    standby_quota_active=720
+    standby_quota_working=10
+    standby_quota_frequent=2
+    standby_quota_rare=1
+    standby_quota_never=0
+    standby_quota_restricted=1
+    app_standby_restricted_window=+1d0h0m0s0ms
+    time_tick_allowed_while_idle=true
+    priority_alarm_delay=+1m0s0ms
+    exact_alarm_deny_list=[]
+    min_device_idle_fuzz=+2m0s0ms
+    max_device_idle_fuzz=+15m0s0ms
+    kill_on_schedule_exact_alarm_revoked=true
+    enable_tare=ENABLED_MODE_OFF
+    temporary_quota_bump=0
+    delay_nonwakeup_alarms_while_screen_off=true
+    cached_listener_removal_delay=+10s0ms
+
+  App Standby Parole: true
+
+  Current AppStateTracker State:
+    Force all apps standby: false
+    Small Battery Device: false
+    Force all apps standby for small battery device: false
+    Plugged In: true
+    Active uids: [u0a84 u0a86 u0a90 u0a94 u0a99 u0a105 u0a116 u0a117 u0a118 u0a119 u0a122 u0a123 u0a124 u0a125 u0a127 u0a128 u0a129 u0a130 u0a131 u0a132 u0a138 u0a142 u0a145 u0a147 u0a149 u0a154 u0a156 u0a161 u0a168 u0a169 u0a183 u0a184 u0a185 u0a187 u0a190 u0a191 u0a214]
+    Except-idle + user exemption list appids: [2000, 10084, 10086, 10090, 10091, 10093, 10117, 10128, 10134, 10166, 10185]
+    User exemption list appids: []
+    Temp exemption list appids: []
+    Exempted bucket packages:
+      User 0
+        com.google.android.networkstack.tethering
+        com.android.providers.telephony
+        com.android.dynsystem
+        com.google.android.cellbroadcastservice
+        com.android.providers.calendar
+        com.android.mms.service
+        com.android.providers.downloads
+        com.android.vending
+        android
+        com.android.nfc
+        com.android.ons
+        com.android.stk
+        com.google.android.bluetooth
+        com.android.providers.settings
+        com.android.se
+        com.android.inputdevices
+        com.google.android.devicelockcontroller
+        com.android.cellbroadcastreceiver
+        com.google.android.networkstack
+        com.android.server.telecom
+        com.android.keychain
+        com.google.android.gms
+        com.android.localtransport
+        com.android.proxyhandler
+        com.android.emulator.multidisplay
+        com.android.imsserviceentitlement
+        com.android.settings
+        com.android.phone
+        com.android.shell
+        com.android.wallpaperbackup
+        com.android.emergency
+        com.android.location.fused
+        com.google.android.cellbroadcastreceiver
+        com.android.bluetooth
+        com.android.providers.contacts
+
+    Restricted packages:
+    Stats:
+      UID_FG_STATE_CHANGED: count=0, total=0.0ms, avg=0.000ms, max calls/s=0 max dur/s=0.0ms max time=0.0ms
+      UID_ACTIVE_STATE_CHANGED: count=37, total=702.0ms, avg=18.972ms, max calls/s=11 max dur/s=247.6ms max time=220.6ms
+      RUN_ANY_CHANGED: count=0, total=0.0ms, avg=0.000ms, max calls/s=0 max dur/s=0.0ms max time=0.0ms
+      ALL_UNEXEMPTED: count=0, total=0.0ms, avg=0.000ms, max calls/s=0 max dur/s=0.0ms max time=0.0ms
+      ALL_EXEMPTION_LIST_CHANGED: count=0, total=0.0ms, avg=0.000ms, max calls/s=0 max dur/s=0.0ms max time=0.0ms
+      TEMP_EXEMPTION_LIST_CHANGED: count=62, total=100.7ms, avg=1.625ms, max calls/s=9 max dur/s=34.8ms max time=29.3ms
+      EXEMPTED_BUCKET_CHANGED: count=2, total=0.8ms, avg=0.412ms, max calls/s=0 max dur/s=0.0ms max time=0.5ms
+      FORCE_ALL_CHANGED: count=0, total=0.0ms, avg=0.000ms, max calls/s=0 max dur/s=0.0ms max time=0.0ms
+      IS_UID_ACTIVE_CACHED: count=0, total=0.0ms, avg=0.000ms, max calls/s=0 max dur/s=0.0ms max time=0.0ms
+      IS_UID_ACTIVE_RAW: count=1, total=0.1ms, avg=0.052ms, max calls/s=0 max dur/s=0.0ms max time=0.1ms
+
+  nowRTC=1793619575253=2026-11-02 12:39:35.253 nowELAPSED=69253
+  mLastTimeChangeClockTime=0=1970-01-01 01:00:00.000
+  mLastTimeChangeRealtime=0
+  mLastTickReceived=2026-11-02 12:39:00.005
+  mLastTickSet=2026-11-02 12:39:00.005
+
+  Recent TIME_TICK history:
+    2026-11-02 12:39:00.003
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+
+  RuntimeStarted=2026-11-02 12:38:38.590
+  Runtime uptime (elapsed): +56s663ms
+  Runtime uptime (uptime): +56s663ms
+
+  Max wakeup delay: +2m0s0ms
+  Time since last dispatch: +7s487ms
+  Next non-wakeup delivery time: --
+  Next non-wakeup alarm: +18s888ms = 88141 = 2026-11-02 12:39:54.141
+    set at -1s442ms
+  Next wakeup alarm: +41s699ms = 110952 = 2026-11-02 12:40:16.952
+    set at -1s442ms
+  Next kernel non-wakeup alarm: +18s887ms
+  Next kernel wakeup alarm: +41s698ms
+  Last wakeup: -7s487ms = 61766
+  Last trigger: -7s487ms = 61766
+  Num time change events: 0
+
+  App ids requesting SCHEDULE_EXACT_ALARM: {2000, 10118, 10119, 10126, 10131, 10132, 10152, 10214}
+
+  Last OP_SCHEDULE_EXACT_ALARM: [2000:default, u0a118:default, u0a119:allow, u0a126:default, u0a131:default, u0a132:default, u0a152:default, u0a214:default]
+
+  Next alarm clock information:
+
+  53 pending alarms:
+    ELAPSED #1: Alarm{806719a type 3 origWhen 76357 whenElapsed 76357 com.google.android.gms}
+      tag=*alarm*:com.google.android.gms.gcm.ACTION_CHECK_QUEUE
+      type=ELAPSED origWhen=+7s104ms window=+11s784ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+7s104ms app_standby=-7s483ms device_idle=-- battery_saver=-8s608ms tare=-8s608ms
+      whenElapsed=+7s104ms maxWhenElapsed=+18s888ms
+      operation=PendingIntent{8777acb: PendingIntentRecord{ac191cf com.google.android.gms/com.google.android.gms.scheduler broadcastIntent}}
+    ELAPSED #2: Alarm{7547baa type 3 origWhen 81870 whenElapsed 81870 com.google.android.gms}
+      tag=*alarm*:com.google.android.gms.vision.DEPENDENCY
+      type=ELAPSED origWhen=+12s617ms window=+14s997ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+12s617ms app_standby=-7s375ms device_idle=-- battery_saver=-7s375ms tare=-7s375ms
+      whenElapsed=+12s617ms maxWhenElapsed=+27s614ms
+      operation=PendingIntent{c22a39b: PendingIntentRecord{4912b2 com.google.android.gms/com.google.android.gms.vision broadcastIntent}}
+    ELAPSED_WAKEUP #3: Alarm{34e1830 type 2 origWhen 88454 whenElapsed 88454 android}
+      tag=*walarm*:*job.deadline*
+      type=ELAPSED_WAKEUP origWhen=+19s201ms window=+22s498ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+19s201ms app_standby=-10s796ms device_idle=-- battery_saver=-- tare=-10s796ms
+      whenElapsed=+19s201ms maxWhenElapsed=+41s699ms
+      listener=android.app.AlarmManager$ListenerWrapper@67aee2f
+    ELAPSED #4: Alarm{64b52a8 type 3 origWhen 88454 whenElapsed 88454 android}
+      tag=*alarm*:*job.delay*
+      type=ELAPSED origWhen=+19s201ms window=+21s145ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+19s201ms app_standby=-8s992ms device_idle=-- battery_saver=-- tare=-8s992ms
+      whenElapsed=+19s201ms maxWhenElapsed=+40s346ms
+      listener=android.app.AlarmManager$ListenerWrapper@11ed109
+    ELAPSED #5: Alarm{402eec1 type 3 origWhen 94000 whenElapsed 94000 android}
+      tag=*alarm*:TIME_TICK
+      type=ELAPSED origWhen=+24s747ms window=0 exactAllowReason=allow-listed repeatInterval=0 count=0 flags=0x9
+      policyWhenElapsed: requester=+24s747ms app_standby=-35s223ms device_idle=-- battery_saver=-- tare=-35s223ms
+      whenElapsed=+24s747ms maxWhenElapsed=+24s747ms
+      listener=com.android.server.alarm.AlarmManagerService$3@9f38d86
+    ELAPSED_WAKEUP #6: Alarm{aa63f0a type 2 origWhen 120000 whenElapsed 120000 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms.drive.ApiService.RESET_AFTER_BOOT
+      type=ELAPSED_WAKEUP origWhen=+50s747ms window=+52s863ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+50s747ms app_standby=-7s483ms device_idle=-- battery_saver=-19s723ms tare=-19s723ms
+      whenElapsed=+50s747ms maxWhenElapsed=+1m43s610ms
+      operation=PendingIntent{bba137b: PendingIntentRecord{c4bf598 com.google.android.gms/com.google.android.gms.drive startService}}
+    ELAPSED #7: Alarm{2385ebf type 3 origWhen 300000 whenElapsed 300000 com.google.android.gms}
+      tag=*alarm*:com.google.android.gms.platformconfigurator.POST_BOOT
+      type=ELAPSED origWhen=+3m50s747ms window=+3m6s384ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3m50s747ms app_standby=-7s483ms device_idle=-- battery_saver=-17s672ms tare=-17s672ms
+      whenElapsed=+3m50s747ms maxWhenElapsed=+6m57s131ms
+      operation=PendingIntent{598b98c: PendingIntentRecord{41c5d47 com.google.android.gms/com.google.android.gms.platformconfigurator startService}}
+    ELAPSED_WAKEUP #8: Alarm{91b203e type 2 origWhen 603407 whenElapsed 603407 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms.gcm.HEARTBEAT_ALARM
+      type=ELAPSED_WAKEUP origWhen=+8m54s154ms window=0 exactAllowReason=allow-listed repeatInterval=0 count=0 flags=0x21
+      policyWhenElapsed: requester=+8m54s154ms app_standby=-7s483ms device_idle=-- battery_saver=-25s845ms tare=-25s845ms
+      whenElapsed=+8m54s154ms maxWhenElapsed=+8m54s154ms
+      operation=PendingIntent{253ce9f: PendingIntentRecord{b83363b com.google.android.gms/com.google.android.gms.gcm broadcastIntent}}
+      idle-options=Bundle[{android.pendingIntent.backgroundActivityAllowed=false, android:broadcast.temporaryAppAllowlistReasonCode=-1, android:broadcast.temporaryAppAllowlistDuration=10000, android:broadcast.temporaryAppAllowlistReason=, android:broadcast.temporaryAppAllowlistType=1, android:broadcast.flags=8}]
+    ELAPSED_WAKEUP #9: Alarm{fc6ffe3 type 2 origWhen 619274 whenElapsed 619274 android}
+      tag=*walarm*:DeviceIdleController.motion
+      type=ELAPSED_WAKEUP origWhen=+9m10s21ms window=+1m0s0ms repeatInterval=0 count=0 flags=0x8
+      policyWhenElapsed: requester=+9m10s21ms app_standby=-47s552ms device_idle=-- battery_saver=-- tare=-49s979ms
+      whenElapsed=+9m10s21ms maxWhenElapsed=+10m10s21ms
+      listener=android.app.AlarmManager$ListenerWrapper@6444de0
+    ELAPSED #10: Alarm{df5925d type 3 origWhen 940919 whenElapsed 940919 com.google.android.configupdater}
+      tag=*alarm*:com.google.android.configupdater.DELAYED_FLAG_COMMIT
+      type=ELAPSED origWhen=+14m31s666ms window=+15m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+14m31s666ms app_standby=-28s302ms device_idle=-- battery_saver=-28s302ms tare=-28s302ms
+      whenElapsed=+14m31s666ms maxWhenElapsed=+29m31s666ms
+      operation=PendingIntent{515d7d2: PendingIntentRecord{7b10a3 com.google.android.configupdater broadcastIntent}}
+    RTC_WAKEUP #11: Alarm{de2fb1c type 0 origWhen 1793620800000 whenElapsed 1294000 com.android.settings}
+      tag=*walarm*:com.android.settings.battery.action.PERIODIC_JOB_UPDATE
+      type=RTC_WAKEUP origWhen=2026-11-02 13:00:00.000 window=0 exactAllowReason=policy_permission repeatInterval=0 count=0 flags=0x9
+      policyWhenElapsed: requester=+20m24s747ms app_standby=-23s551ms device_idle=-- battery_saver=-- tare=-23s551ms
+      whenElapsed=+20m24s747ms maxWhenElapsed=+20m24s747ms
+      operation=PendingIntent{5cfa325: PendingIntentRecord{bbecfa com.android.settings broadcastIntent}}
+      idle-options=Bundle[{android.pendingIntent.backgroundActivityAllowed=false, android:broadcast.temporaryAppAllowlistReasonCode=302, android:broadcast.temporaryAppAllowlistDuration=10000, android:broadcast.temporaryAppAllowlistReason=, android:broadcast.temporaryAppAllowlistType=0, android:broadcast.flags=8}]
+    ELAPSED #12: Alarm{b3515e0 type 3 origWhen 1818709 whenElapsed 1818709 android}
+      tag=*alarm*:com.android.server.action.NETWORK_STATS_POLL
+      type=ELAPSED origWhen=+29m9s456ms window=+22m30s0ms repeatInterval=1800000 count=0 flags=0x8
+      policyWhenElapsed: requester=+29m9s456ms app_standby=-27s901ms device_idle=-- battery_saver=-- tare=-27s901ms
+      whenElapsed=+29m9s456ms maxWhenElapsed=+51m39s456ms
+      operation=PendingIntent{f6e38e5: PendingIntentRecord{d622fba android broadcastIntent}}
+    ELAPSED #13: Alarm{cbc11f1 type 3 origWhen 1849381 whenElapsed 1849381 com.google.android.gms}
+      tag=*alarm*:com.google.android.gms.common.operation.LOG_CORE_ANALYTICS
+      type=ELAPSED origWhen=+29m40s128ms window=+22m30s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+29m40s128ms app_standby=-7s483ms device_idle=-- battery_saver=-19s846ms tare=-19s846ms
+      whenElapsed=+29m40s128ms maxWhenElapsed=+52m10s128ms
+      operation=PendingIntent{af141d6: PendingIntentRecord{c4c6c57 com.google.android.gms/com.google.android.gms.core startService}}
+    ELAPSED #14: Alarm{b502de3 type 3 origWhen 10294000 whenElapsed 10294000 com.google.android.gms}
+      tag=*alarm*:com.google.android.location.ALARM_WAKEUP_BURST_COLLECTION_TRIGGER
+      type=ELAPSED origWhen=+2h50m24s747ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+2h50m24s747ms app_standby=-7s483ms device_idle=-- battery_saver=-32s42ms tare=-32s42ms
+      whenElapsed=+2h50m24s747ms maxWhenElapsed=+3h50m24s747ms
+      operation=PendingIntent{fb0e3e0: PendingIntentRecord{2ff7699 com.google.android.gms/com.google.android.gms.location_base broadcastIntent}}
+    ELAPSED #15: Alarm{ce7cff1 type 3 origWhen 14434417 whenElapsed 14434417 com.google.android.gms}
+      tag=*alarm*:CMAlarm
+      type=ELAPSED origWhen=+3h59m25s164ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3h59m25s164ms app_standby=-7s483ms device_idle=-- battery_saver=-34s786ms tare=-34s786ms
+      whenElapsed=+3h59m25s164ms maxWhenElapsed=+4h59m25s164ms
+      listener=android.os.BinderProxy@57527d6
+    ELAPSED #16: Alarm{8d7d8d5 type 3 origWhen 14451441 whenElapsed 14451441 com.google.android.gms}
+      tag=*alarm*:com.google.android.gms.westworld.action.METADATA_ALARM
+      type=ELAPSED origWhen=+3h59m42s188ms window=+3h0m0s0ms repeatInterval=14400000 count=0 flags=0x0
+      policyWhenElapsed: requester=+3h59m42s188ms app_standby=-7s483ms device_idle=-- battery_saver=-17s683ms tare=-17s683ms
+      whenElapsed=+3h59m42s188ms maxWhenElapsed=+6h59m42s188ms
+      operation=PendingIntent{1b668ea: PendingIntentRecord{d9e27db com.google.android.gms/com.google.android.gms.westworld startService}}
+    ELAPSED_WAKEUP #17: Alarm{e860153 type 2 origWhen 21600000 whenElapsed 21600000 com.android.providers.calendar}
+      tag=*walarm*:com.android.providers.calendar.intent.CalendarProvider2
+      type=ELAPSED_WAKEUP origWhen=+5h58m50s747ms window=+4h30m0s0ms repeatInterval=21600000 count=0 flags=0x0
+      policyWhenElapsed: requester=+5h58m50s747ms app_standby=-24s195ms device_idle=-- battery_saver=-29s208ms tare=-29s208ms
+      whenElapsed=+5h58m50s747ms maxWhenElapsed=+10h28m50s747ms
+      operation=PendingIntent{ca80a90: PendingIntentRecord{2248f89 com.android.providers.calendar broadcastIntent}}
+    ELAPSED_WAKEUP #18: Alarm{60f9899 type 2 origWhen 21620428 whenElapsed 21620428 com.google.android.bluetooth}
+      tag=*walarm*:BluetoothMetricsLogger
+      type=ELAPSED_WAKEUP origWhen=+5h59m11s175ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x8
+      policyWhenElapsed: requester=+5h59m11s175ms app_standby=-47s547ms device_idle=-- battery_saver=-- tare=-48s824ms
+      whenElapsed=+5h59m11s175ms maxWhenElapsed=+6h59m11s175ms
+      listener=android.os.BinderProxy@478c75e
+    ELAPSED_WAKEUP #19: Alarm{8890e9d type 2 origWhen 21638090 whenElapsed 21638090 com.google.android.gms}
+      tag=*walarm*:NetworkLocationLocator
+      type=ELAPSED_WAKEUP origWhen=+5h59m28s837ms window=+53m32s368ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+5h59m28s837ms app_standby=-7s483ms device_idle=-- battery_saver=-26s948ms tare=-26s948ms
+      whenElapsed=+5h59m28s837ms maxWhenElapsed=+6h53m1s205ms
+      listener=android.os.BinderProxy@f3d3f12
+    RTC_WAKEUP #20: Alarm{4dfb73f type 0 origWhen 1793653200000 whenElapsed 33694000 android}
+      tag=*walarm*:ScheduleConditionProvider.EVALUATE
+      type=RTC_WAKEUP origWhen=2026-11-02 22:00:00.000 window=0 exactAllowReason=policy_permission repeatInterval=0 count=0 flags=0x9
+      policyWhenElapsed: requester=+9h20m24s747ms app_standby=-47s552ms device_idle=-- battery_saver=-- tare=-48s724ms
+      whenElapsed=+9h20m24s747ms maxWhenElapsed=+9h20m24s747ms
+      operation=PendingIntent{6d0680c: PendingIntentRecord{bb82555 android broadcastIntent}}
+      idle-options=Bundle[{android.pendingIntent.backgroundActivityAllowed=false, android:broadcast.temporaryAppAllowlistReasonCode=302, android:broadcast.temporaryAppAllowlistDuration=10000, android:broadcast.temporaryAppAllowlistReason=, android:broadcast.temporaryAppAllowlistType=0, android:broadcast.flags=8}]
+    ELAPSED #21: Alarm{281f4da type 3 origWhen 36229497 whenElapsed 36229497 com.google.android.gms}
+      tag=*alarm*:com.google.android.location.ALARM_WAKEUP_DAILY_UPLOADER
+      type=ELAPSED origWhen=+10h2m40s244ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+10h2m40s244ms app_standby=-7s483ms device_idle=-- battery_saver=-32s112ms tare=-32s112ms
+      whenElapsed=+10h2m40s244ms maxWhenElapsed=+11h2m40s244ms
+      operation=PendingIntent{48bdd0b: PendingIntentRecord{e68a7e8 com.google.android.gms/com.google.android.gms.location_base broadcastIntent}}
+    ELAPSED #22: Alarm{d85fb6a type 3 origWhen 37343330 whenElapsed 37343330 android}
+      tag=*alarm*:WifiHealthMonitor Schedule Daily Detection Timer
+      type=ELAPSED origWhen=+10h21m14s77ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x8
+      policyWhenElapsed: requester=+10h21m14s77ms app_standby=-45s923ms device_idle=-- battery_saver=-- tare=-45s923ms
+      whenElapsed=+10h21m14s77ms maxWhenElapsed=+11h21m14s77ms
+      listener=android.app.AlarmManager$ListenerWrapper@2a2885b
+    RTC #23: Alarm{621f8f8 type 1 origWhen 1793660400000 whenElapsed 40894000 android}
+      tag=*alarm*:android.intent.action.DATE_CHANGED
+      type=RTC origWhen=2026-11-03 00:00:00.000 window=0 exactAllowReason=allow-listed repeatInterval=0 count=0 flags=0x1
+      policyWhenElapsed: requester=+11h20m24s747ms app_standby=-47s552ms device_idle=-- battery_saver=-- tare=-51s307ms
+      whenElapsed=+11h20m24s747ms maxWhenElapsed=+11h20m24s747ms
+      operation=PendingIntent{e22c1d1: PendingIntentRecord{4806436 android broadcastIntent}}
+    RTC_WAKEUP #24: Alarm{6b698e4 type 0 origWhen 1793660400000 whenElapsed 40894000 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms.reminders.notification.ACTION_REFRESH_TIME_REMINDERS
+      type=RTC_WAKEUP origWhen=2026-11-03 00:00:00.000 window=0 exactAllowReason=allow-listed repeatInterval=0 count=0 flags=0x21
+      policyWhenElapsed: requester=+11h20m24s747ms app_standby=-7s483ms device_idle=-- battery_saver=-18s346ms tare=-18s346ms
+      whenElapsed=+11h20m24s747ms maxWhenElapsed=+11h20m24s747ms
+      operation=PendingIntent{2acc14d: PendingIntentRecord{501f402 com.google.android.gms/com.google.android.gms.reminders startService}}
+      idle-options=Bundle[{android.pendingIntent.backgroundActivityAllowed=false, android:broadcast.temporaryAppAllowlistReasonCode=-1, android:broadcast.temporaryAppAllowlistDuration=10000, android:broadcast.temporaryAppAllowlistReason=, android:broadcast.temporaryAppAllowlistType=1, android:broadcast.flags=8}]
+    ELAPSED_WAKEUP #25: Alarm{a4bf46c type 2 origWhen 43229113 whenElapsed 43229113 com.google.android.networkstack}
+      tag=*walarm*:DhcpClient.wlan0.RENEW
+      type=ELAPSED_WAKEUP origWhen=+11h59m19s860ms window=0 exactAllowReason=listener repeatInterval=0 count=0 flags=0x9
+      policyWhenElapsed: requester=+11h59m19s860ms app_standby=-39s952ms device_idle=-- battery_saver=-- tare=-39s952ms
+      whenElapsed=+11h59m19s860ms maxWhenElapsed=+11h59m19s860ms
+      listener=android.os.BinderProxy@e582a35
+      idle-options=Bundle[{android.pendingIntent.backgroundActivityAllowed=false, android:broadcast.temporaryAppAllowlistReasonCode=302, android:broadcast.temporaryAppAllowlistDuration=10000, android:broadcast.temporaryAppAllowlistReason=, android:broadcast.temporaryAppAllowlistType=0, android:broadcast.flags=8}]
+    ELAPSED #26: Alarm{1e3838 type 3 origWhen 44475478 whenElapsed 44475478 android}
+      tag=*alarm*:*usage.launchTime*
+      type=ELAPSED origWhen=+12h20m6s225ms window=0 exactAllowReason=listener repeatInterval=0 count=0 flags=0x9
+      policyWhenElapsed: requester=+12h20m6s225ms app_standby=-37s308ms device_idle=-- battery_saver=-- tare=-37s308ms
+      whenElapsed=+12h20m6s225ms maxWhenElapsed=+12h20m6s225ms
+      listener=android.app.AlarmManager$ListenerWrapper@54f3011
+      idle-options=Bundle[{android.pendingIntent.backgroundActivityAllowed=false, android:broadcast.temporaryAppAllowlistReasonCode=302, android:broadcast.temporaryAppAllowlistDuration=10000, android:broadcast.temporaryAppAllowlistReason=, android:broadcast.temporaryAppAllowlistType=0, android:broadcast.flags=8}]
+    RTC #27: Alarm{f74f37 type 1 origWhen 1793664000000 whenElapsed 44494000 android}
+      tag=*alarm*:GraphicsStatsService
+      type=RTC origWhen=2026-11-03 01:00:00.000 window=0 exactAllowReason=listener repeatInterval=0 count=0 flags=0x9
+      policyWhenElapsed: requester=+12h20m24s747ms app_standby=-47s553ms device_idle=-- battery_saver=-- tare=-49s889ms
+      whenElapsed=+12h20m24s747ms maxWhenElapsed=+12h20m24s747ms
+      listener=android.app.AlarmManager$ListenerWrapper@ef9aca4
+      idle-options=Bundle[{android.pendingIntent.backgroundActivityAllowed=false, android:broadcast.temporaryAppAllowlistReasonCode=302, android:broadcast.temporaryAppAllowlistDuration=10000, android:broadcast.temporaryAppAllowlistReason=, android:broadcast.temporaryAppAllowlistType=0, android:broadcast.flags=8}]
+    RTC #28: Alarm{e1dd1d3 type 1 origWhen 1793664069345 whenElapsed 44563345 com.google.android.apps.wallpaper}
+      tag=*alarm*:com.google.android.apps.wallpaper/com.android.wallpaper.module.DailyLoggingAlarmReceiver
+      type=RTC origWhen=2026-11-03 01:01:09.345 window=+18h0m0s0ms repeatInterval=86400000 count=0 flags=0x0
+      policyWhenElapsed: requester=+12h21m34s92ms app_standby=-29s356ms device_idle=-- battery_saver=-29s356ms tare=-29s356ms
+      whenElapsed=+12h21m34s92ms maxWhenElapsed=+1d6h21m34s92ms
+      operation=PendingIntent{4d2d110: PendingIntentRecord{bd61409 com.google.android.apps.wallpaper broadcastIntent}}
+    RTC_WAKEUP #29: Alarm{c37760e type 0 origWhen 1793671047615 whenElapsed 51541615 com.google.android.apps.messaging}
+      tag=*walarm*:android.intent.action.VIEW
+      type=RTC_WAKEUP origWhen=2026-11-03 02:57:27.615 window=+18h0m0s0ms repeatInterval=86400000 count=0 flags=0x0
+      policyWhenElapsed: requester=+14h17m52s362ms app_standby=-29s605ms device_idle=-- battery_saver=-29s605ms tare=-29s605ms
+      whenElapsed=+14h17m52s362ms maxWhenElapsed=+1d8h17m52s362ms
+      operation=PendingIntent{669b82f: PendingIntentRecord{47bee3c com.google.android.apps.messaging broadcastIntent}}
+    ELAPSED #30: Alarm{31ae9ca type 3 origWhen 64830053 whenElapsed 64830053 android}
+      tag=*alarm*:com.android.server.timedetector.NetworkTimeUpdateService.action.POLL
+      type=ELAPSED origWhen=+17h59m20s800ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x8
+      policyWhenElapsed: requester=+17h59m20s800ms app_standby=-39s63ms device_idle=-- battery_saver=-- tare=-39s63ms
+      whenElapsed=+17h59m20s800ms maxWhenElapsed=+18h59m20s800ms
+      operation=PendingIntent{1ed473b: PendingIntentRecord{5d7e58 android broadcastIntent}}
+    ELAPSED_WAKEUP #31: Alarm{2644eca type 2 origWhen 75629093 whenElapsed 75629093 com.google.android.networkstack}
+      tag=*walarm*:DhcpClient.wlan0.REBIND
+      type=ELAPSED_WAKEUP origWhen=+20h59m19s840ms window=0 exactAllowReason=listener repeatInterval=0 count=0 flags=0x9
+      policyWhenElapsed: requester=+20h59m19s840ms app_standby=-39s939ms device_idle=-- battery_saver=-- tare=-39s939ms
+      whenElapsed=+20h59m19s840ms maxWhenElapsed=+20h59m19s840ms
+      listener=android.os.BinderProxy@ef3483b
+      idle-options=Bundle[{android.pendingIntent.backgroundActivityAllowed=false, android:broadcast.temporaryAppAllowlistReasonCode=302, android:broadcast.temporaryAppAllowlistDuration=10000, android:broadcast.temporaryAppAllowlistReason=, android:broadcast.temporaryAppAllowlistType=0, android:broadcast.flags=8}]
+    ELAPSED #32: Alarm{6d93c0c type 3 origWhen 86400000 whenElapsed 86400000 com.google.android.gms}
+      tag=*alarm*:com.google.android.gms/.analytics.internal.PlayLogReportingService
+      type=ELAPSED origWhen=+23h58m50s747ms window=+18h0m0s0ms repeatInterval=86400000 count=0 flags=0x0
+      policyWhenElapsed: requester=+23h58m50s747ms app_standby=-7s483ms device_idle=-- battery_saver=-20s483ms tare=-20s483ms
+      whenElapsed=+23h58m50s747ms maxWhenElapsed=+1d17h58m50s747ms
+      operation=PendingIntent{8126955: PendingIntentRecord{8acef6a com.google.android.gms/com.google.android.gms.analytics startService}}
+    ELAPSED_WAKEUP #33: Alarm{dc0aa0d type 2 origWhen 86417069 whenElapsed 86417069 android}
+      tag=*walarm*:AutomaticOnOffKeepaliveTracker
+      type=ELAPSED_WAKEUP origWhen=+23h59m7s816ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x8
+      policyWhenElapsed: requester=+23h59m7s816ms app_standby=-47s553ms device_idle=-- battery_saver=-- tare=-52s183ms
+      whenElapsed=+23h59m7s816ms maxWhenElapsed=+1d0h59m7s816ms
+      listener=android.app.AlarmManager$ListenerWrapper@1e68dc2
+    RTC_WAKEUP #34: Alarm{467a7d3 type 0 origWhen 1793705926487 whenElapsed 86420487 android}
+      tag=*walarm*:EventConditionProvider.EVALUATE
+      type=RTC_WAKEUP origWhen=2026-11-03 12:38:46.487 window=0 exactAllowReason=policy_permission repeatInterval=0 count=0 flags=0x9
+      policyWhenElapsed: requester=+23h59m11s234ms app_standby=-47s553ms device_idle=-- battery_saver=-- tare=-48s761ms
+      whenElapsed=+23h59m11s234ms maxWhenElapsed=+23h59m11s234ms
+      operation=PendingIntent{576ef10: PendingIntentRecord{6dada09 android broadcastIntent}}
+      idle-options=Bundle[{android.pendingIntent.backgroundActivityAllowed=false, android:broadcast.temporaryAppAllowlistReasonCode=302, android:broadcast.temporaryAppAllowlistDuration=10000, android:broadcast.temporaryAppAllowlistReason=, android:broadcast.temporaryAppAllowlistType=0, android:broadcast.flags=8}]
+    ELAPSED #35: Alarm{3c5ef0e type 3 origWhen 86424318 whenElapsed 86424318 android}
+      tag=*alarm*:*CountQuotaTracker.cleanup*
+      type=ELAPSED origWhen=+23h59m15s65ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x8
+      policyWhenElapsed: requester=+23h59m15s65ms app_standby=-44s907ms device_idle=-- battery_saver=-- tare=-44s907ms
+      whenElapsed=+23h59m15s65ms maxWhenElapsed=+1d0h59m15s65ms
+      listener=android.app.AlarmManager$ListenerWrapper@cf13d2f
+    ELAPSED_WAKEUP #36: Alarm{639eb58 type 2 origWhen 86429087 whenElapsed 86429087 com.google.android.networkstack}
+      tag=*walarm*:DhcpClient.wlan0.EXPIRY
+      type=ELAPSED_WAKEUP origWhen=+23h59m19s834ms window=0 exactAllowReason=listener repeatInterval=0 count=0 flags=0x9
+      policyWhenElapsed: requester=+23h59m19s834ms app_standby=-39s912ms device_idle=-- battery_saver=-- tare=-39s912ms
+      whenElapsed=+23h59m19s834ms maxWhenElapsed=+23h59m19s834ms
+      listener=android.os.BinderProxy@a6e34b1
+      idle-options=Bundle[{android.pendingIntent.backgroundActivityAllowed=false, android:broadcast.temporaryAppAllowlistReasonCode=302, android:broadcast.temporaryAppAllowlistDuration=10000, android:broadcast.temporaryAppAllowlistReason=, android:broadcast.temporaryAppAllowlistType=0, android:broadcast.flags=8}]
+    ELAPSED #37: Alarm{a895a57 type 3 origWhen 86434470 whenElapsed 86434470 com.google.android.gms}
+      tag=*alarm*:CMAlarm
+      type=ELAPSED origWhen=+23h59m25s217ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+23h59m25s217ms app_standby=-7s483ms device_idle=-- battery_saver=-34s751ms tare=-34s751ms
+      whenElapsed=+23h59m25s217ms maxWhenElapsed=+1d0h59m25s217ms
+      listener=android.os.BinderProxy@c4c2944
+    ELAPSED #38: Alarm{9f78435 type 3 origWhen 86450027 whenElapsed 86450027 com.google.android.gms}
+      tag=*alarm*:com.google.android.gms.lockbox.CHECK_OPT_IN
+      type=ELAPSED origWhen=+23h59m40s774ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+23h59m40s774ms app_standby=-7s483ms device_idle=-- battery_saver=-19s166ms tare=-19s166ms
+      whenElapsed=+23h59m40s774ms maxWhenElapsed=+1d0h59m40s774ms
+      operation=PendingIntent{ea9a0ca: PendingIntentRecord{373323b com.google.android.gms/com.google.android.gms.lockbox startService}}
+    ELAPSED #39: Alarm{adde278 type 3 origWhen 86451457 whenElapsed 86451457 com.google.android.gms}
+      tag=*alarm*:com.google.android.gms.stats.eastworld.action.EASTWORLD_ALARM
+      type=ELAPSED origWhen=+23h59m42s204ms window=+1h30m0s0ms repeatInterval=7200000 count=0 flags=0x0
+      policyWhenElapsed: requester=+23h59m42s204ms app_standby=-7s483ms device_idle=-- battery_saver=-17s682ms tare=-17s682ms
+      whenElapsed=+23h59m42s204ms maxWhenElapsed=+1d1h29m42s204ms
+      operation=PendingIntent{c4a2d51: PendingIntentRecord{30a29b6 com.google.android.gms/com.google.android.gms.stats startService}}
+    ELAPSED #40: Alarm{bdb43e7 type 3 origWhen 104561717 whenElapsed 104561717 com.google.android.gms}
+      tag=*alarm*:com.google.android.gms.auth.authzen.CHECK_REGISTRATION
+      type=ELAPSED origWhen=+1d5h1m32s464ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+1d5h1m32s464ms app_standby=-7s484ms device_idle=-- battery_saver=-20s336ms tare=-20s336ms
+      whenElapsed=+1d5h1m32s464ms maxWhenElapsed=+1d6h1m32s464ms
+      operation=PendingIntent{6b67b94: PendingIntentRecord{dd1e63d com.google.android.gms/com.google.android.gms.auth_authzen__phone startService}}
+    RTC #41: Alarm{93d9b45 type 1 origWhen 1794132000000 whenElapsed 512494000 com.google.android.apps.wellbeing}
+      tag=*alarm*:com.google.android.apps.wellbeing.focusmode.growth.SCHEDULED_GROWTH_NOTIFICATION
+      type=RTC origWhen=2026-11-08 11:00:00.000 window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+5d22h20m24s747ms app_standby=-29s161ms device_idle=-- battery_saver=-29s161ms tare=-29s161ms
+      whenElapsed=+5d22h20m24s747ms maxWhenElapsed=+5d23h20m24s747ms
+      operation=PendingIntent{e8529a: PendingIntentRecord{93247cb com.google.android.apps.wellbeing broadcastIntent}}
+    ELAPSED_WAKEUP #42: Alarm{83350f6 type 2 origWhen 315360033517 whenElapsed 315360033517 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms/com.google.android.contextmanager.service.ContextManagerService
+      type=ELAPSED_WAKEUP origWhen=+3649d23h59m24s264ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3649d23h59m24s264ms app_standby=-7s484ms device_idle=-- battery_saver=-35s727ms tare=-35s727ms
+      whenElapsed=+3649d23h59m24s264ms maxWhenElapsed=+3650d0h59m24s264ms
+      operation=PendingIntent{4c89cf7: PendingIntentRecord{7484764 com.google.android.gms/com.google.android.gms.contextmanager startService}}
+    ELAPSED_WAKEUP #43: Alarm{444a666 type 2 origWhen 315360034322 whenElapsed 315360034322 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService
+      type=ELAPSED_WAKEUP origWhen=+3649d23h59m25s69ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3649d23h59m25s69ms app_standby=-7s484ms device_idle=-- battery_saver=-34s929ms tare=-34s929ms
+      whenElapsed=+3649d23h59m25s69ms maxWhenElapsed=+3650d0h59m25s69ms
+      operation=PendingIntent{4d21da7: PendingIntentRecord{79a9fe4 com.google.android.gms/fused_location_provider startService}}
+    ELAPSED_WAKEUP #44: Alarm{bdc9cb3 type 2 origWhen 315360034983 whenElapsed 315360034983 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService
+      type=ELAPSED_WAKEUP origWhen=+3649d23h59m25s730ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3649d23h59m25s730ms app_standby=-7s484ms device_idle=-- battery_saver=-34s143ms tare=-34s143ms
+      whenElapsed=+3649d23h59m25s730ms maxWhenElapsed=+3650d0h59m25s730ms
+      operation=PendingIntent{a1f7270: PendingIntentRecord{bf4e2a9 com.google.android.gms/geofencer_provider startService}}
+    ELAPSED_WAKEUP #45: Alarm{717d3ac type 2 origWhen 315360036409 whenElapsed 315360036409 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms/com.google.android.location.internal.server.GoogleLocationService
+      type=ELAPSED_WAKEUP origWhen=+3649d23h59m27s156ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3649d23h59m27s156ms app_standby=-7s484ms device_idle=-- battery_saver=-32s824ms tare=-32s824ms
+      whenElapsed=+3649d23h59m27s156ms maxWhenElapsed=+3650d0h59m27s156ms
+      operation=PendingIntent{aabb875: PendingIntentRecord{ccf600a com.google.android.gms/com.google.android.gms.location_base startService}}
+    ELAPSED_WAKEUP #46: Alarm{54b207b type 2 origWhen 315360036523 whenElapsed 315360036523 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms/com.google.android.location.internal.server.GoogleLocationService
+      type=ELAPSED_WAKEUP origWhen=+3649d23h59m27s270ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3649d23h59m27s270ms app_standby=-7s484ms device_idle=-- battery_saver=-32s672ms tare=-32s672ms
+      whenElapsed=+3649d23h59m27s270ms maxWhenElapsed=+3650d0h59m27s270ms
+      operation=PendingIntent{f047e98: PendingIntentRecord{50c66f1 com.google.android.gms/com.google.android.gms.location_base startService}}
+    ELAPSED_WAKEUP #47: Alarm{b285e01 type 2 origWhen 315360036633 whenElapsed 315360036633 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms/com.google.android.location.internal.server.GoogleLocationService
+      type=ELAPSED_WAKEUP origWhen=+3649d23h59m27s380ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3649d23h59m27s380ms app_standby=-7s484ms device_idle=-- battery_saver=-32s617ms tare=-32s617ms
+      whenElapsed=+3649d23h59m27s380ms maxWhenElapsed=+3650d0h59m27s380ms
+      operation=PendingIntent{29a84a6: PendingIntentRecord{e993ee7 com.google.android.gms/com.google.android.gms.location_base startService}}
+    ELAPSED_WAKEUP #48: Alarm{bd7053c type 2 origWhen 315360038642 whenElapsed 315360038642 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms/.semanticlocation.service.SemanticLocationService
+      type=ELAPSED_WAKEUP origWhen=+3649d23h59m29s389ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3649d23h59m29s389ms app_standby=-7s484ms device_idle=-- battery_saver=-30s401ms tare=-30s401ms
+      whenElapsed=+3649d23h59m29s389ms maxWhenElapsed=+3650d0h59m29s389ms
+      operation=PendingIntent{68db2c5: PendingIntentRecord{2b541a com.google.android.gms/com.google.android.gms.semanticlocation startService}}
+    ELAPSED_WAKEUP #49: Alarm{b3421c1 type 2 origWhen 315360039347 whenElapsed 315360039347 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms/.nearby.messages.service.NearbyMessagesService
+      type=ELAPSED_WAKEUP origWhen=+3649d23h59m30s94ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3649d23h59m30s94ms app_standby=-7s484ms device_idle=-- battery_saver=-29s892ms tare=-29s892ms
+      whenElapsed=+3649d23h59m30s94ms maxWhenElapsed=+3650d0h59m30s94ms
+      operation=PendingIntent{3c15d66: PendingIntentRecord{6ae08a7 com.google.android.gms/nearby_messages startService}}
+    ELAPSED_WAKEUP #50: Alarm{f2fa2b5 type 2 origWhen 315360045084 whenElapsed 315360045084 com.google.android.gms}
+      tag=*walarm*:com.google.android.gms/.tapandpay.security.StorageKeyCacheService
+      type=ELAPSED_WAKEUP origWhen=+3649d23h59m35s831ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3649d23h59m35s831ms app_standby=-7s484ms device_idle=-- battery_saver=-24s158ms tare=-24s158ms
+      whenElapsed=+3649d23h59m35s831ms maxWhenElapsed=+3650d0h59m35s831ms
+      operation=PendingIntent{7d99d4a: PendingIntentRecord{6d0b4bb com.google.android.gms/com.google.android.gms.tapandpay startService}}
+    ELAPSED #51: Alarm{fb19743 type 3 origWhen 315360060772 whenElapsed 315360060772 com.google.android.gms}
+      tag=*alarm*:com.google.android.chimera.container.IntentOperationService.SAVED_INTENT
+      type=ELAPSED origWhen=+3649d23h59m51s519ms window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+3649d23h59m51s519ms app_standby=-7s484ms device_idle=-- battery_saver=-8s478ms tare=-8s478ms
+      whenElapsed=+3649d23h59m51s519ms maxWhenElapsed=+3650d0h59m51s519ms
+      operation=PendingIntent{b8601c0: PendingIntentRecord{7176ef9 com.google.android.gms/ startService}}
+    RTC #52: Alarm{49d9bec type 1 origWhen 9223372036854775807 whenElapsed 9223370243235269807 com.google.android.googlequicksearchbox}
+      tag=*alarm*:com.google.android.googlequicksearchbox/com.google.android.apps.search.assistant.platform.pcp.validity.ValidityController_Receiver
+      type=RTC origWhen=292278994-08-17 08:12:55.807 window=0 exactAllowReason=permission repeatInterval=0 count=0 flags=0x5
+      policyWhenElapsed: requester=+24855d3h14m7s554ms app_standby=-25s397ms device_idle=-- battery_saver=-25s397ms tare=-25s397ms
+      whenElapsed=+24855d3h14m7s554ms maxWhenElapsed=+24855d3h14m7s554ms
+      operation=PendingIntent{1257bb5: PendingIntentRecord{ba5024a com.google.android.googlequicksearchbox broadcastIntent}}
+      idle-options=Bundle[{android.pendingIntent.backgroundActivityAllowed=false, android:broadcast.temporaryAppAllowlistReasonCode=302, android:broadcast.temporaryAppAllowlistDuration=10000, android:broadcast.temporaryAppAllowlistReason=, android:broadcast.temporaryAppAllowlistType=0, android:broadcast.flags=8}]
+    RTC #53: Alarm{6b3ce32 type 1 origWhen 9223372036854775807 whenElapsed 9223370243235269807 com.google.android.gms}
+      tag=*alarm*:com.google.android.chimera.IntentOperation.TARGETED_INTENT
+      type=RTC origWhen=292278994-08-17 08:12:55.807 window=+20759d11h38m26s0ms repeatInterval=0 count=0 flags=0x0
+      policyWhenElapsed: requester=+24855d3h14m7s554ms app_standby=-7s484ms device_idle=-- battery_saver=-20s313ms tare=-20s313ms
+      whenElapsed=+24855d3h14m7s554ms maxWhenElapsed=+24855d3h14m7s554ms
+      operation=PendingIntent{e3783: PendingIntentRecord{d49bd00 com.google.android.gms/com.google.android.gms.ota_base broadcastIntent}}
+  LazyAlarmStore stats:
+    GET_NEXT_DELIVERY_TIME: count=252, total=4.9ms, avg=0.020ms, max calls/s=0 max dur/s=0.0ms max time=0.4ms
+    GET_NEXT_WAKEUP_DELIVERY_TIME: count=252, total=6.8ms, avg=0.027ms, max calls/s=34 max dur/s=1.4ms max time=0.8ms
+    GET_COUNT: count=0, total=0.0ms, avg=0.000ms, max calls/s=0 max dur/s=0.0ms max time=0.0ms
+
+  Pending user blocked background alarms:
+    none
+
+  Pending alarms per uid: [1000:15, 1002:1, 1073:3, u0a90:1, u0a119:1, u0a128:28, u0a129:1, u0a131:1, u0a132:1, u0a161:1]
+
+  App Alarm history:
+    com.android.providers.calendar, u0: -24s198ms,
+    com.google.android.gms, u0: -7s487ms, -14s478ms,
+
+  Temporary Quota Reserves:
+
+  Past-due non-wakeup alarms: (none)
+    Number of delayed alarms: 0, total delay time: 0
+    Max delay time: 0, max non-interactive time: 0
+
+  Broadcast ref count: 0
+  PendingIntent send count: 4
+  PendingIntent finish count: 4
+  Listener send count: 9
+  Listener finish count: 9
+
+  Allow while idle history:
+
+  Allow while idle compat history:
+
+  Removal history:
+    1000:
+      #1: Reason=alarm_cancelled elapsed=-5s735ms rtc=2026-11-02 12:39:29.518
+        Snapshot:
+          type=ELAPSED_WAKEUP tag=*walarm*:WificondScannerImpl Scan Timeout
+          policyWhenElapsed: requester=+9s177ms app_standby=-5s823ms device_idle=-- battery_saver=-- tare=-5s823ms
+      #2: Reason=pi_cancelled elapsed=-23s560ms rtc=2026-11-02 12:39:11.693
+        Snapshot:
+          type=RTC_WAKEUP tag=*walarm*:com.android.settings.battery.action.PERIODIC_JOB_UPDATE
+          policyWhenElapsed: requester=+20m24s747ms app_standby=-29s568ms device_idle=-- battery_saver=-- tare=-29s568ms
+      #3: Reason=alarm_cancelled elapsed=-25s701ms rtc=2026-11-02 12:39:09.552
+        Snapshot:
+          type=ELAPSED_WAKEUP tag=*walarm*:WificondScannerImpl Scan Timeout
+          policyWhenElapsed: requester=-10s828ms app_standby=-25s828ms device_idle=-- battery_saver=-- tare=-25s828ms
+      #4: Reason=alarm_cancelled elapsed=-30s352ms rtc=2026-11-02 12:39:04.901
+        Snapshot:
+          type=ELAPSED_WAKEUP tag=*walarm*:WificondScannerImpl Scan Timeout
+          policyWhenElapsed: requester=-16s149ms app_standby=-31s11ms device_idle=-- battery_saver=-- tare=-31s11ms
+      #5: Reason=alarm_cancelled elapsed=-33s200ms rtc=2026-11-02 12:39:02.053
+        Snapshot:
+          type=ELAPSED_WAKEUP tag=*walarm*:WificondScannerImpl Scan Timeout
+          policyWhenElapsed: requester=-21s999ms app_standby=-36s999ms device_idle=-- battery_saver=-- tare=-36s999ms
+      #6: Reason=alarm_cancelled elapsed=-38s514ms rtc=2026-11-02 12:38:56.739
+        Snapshot:
+          type=ELAPSED_WAKEUP tag=*walarm*:WriteBufferAlarm
+          policyWhenElapsed: requester=-29s782ms app_standby=-39s728ms device_idle=-- battery_saver=-- tare=-39s728ms
+      #7: Reason=alarm_cancelled elapsed=-41s911ms rtc=2026-11-02 12:38:53.342
+        Snapshot:
+          type=ELAPSED_WAKEUP tag=*walarm*:WificondScannerImpl Scan Timeout
+          policyWhenElapsed: requester=-30s798ms app_standby=-45s797ms device_idle=-- battery_saver=-- tare=-45s797ms
+      #8: Reason=alarm_cancelled elapsed=-51s182ms rtc=2026-11-02 12:38:44.071
+        Snapshot:
+          type=ELAPSED_WAKEUP tag=*walarm*:WriteBufferAlarm
+          policyWhenElapsed: requester=-41s256ms app_standby=-51s255ms device_idle=-- battery_saver=-- tare=-51s255ms
+    1073:
+      #1: Reason=alarm_cancelled elapsed=-39s875ms rtc=2026-11-02 12:38:55.378
+        Snapshot:
+          type=ELAPSED_WAKEUP tag=*walarm*:IpClient.wlan0.EVENT_PROVISIONING_TIMEOUT
+          policyWhenElapsed: requester=-22s711ms app_standby=-40s648ms device_idle=-- battery_saver=-- tare=-40s648ms
+      #2: Reason=alarm_cancelled elapsed=-40s162ms rtc=2026-11-02 12:38:55.091
+        Snapshot:
+          type=ELAPSED_WAKEUP tag=*walarm*:IpClient.wlan0.EVENT_DHCPACTION_TIMEOUT
+          policyWhenElapsed: requester=-22s288ms app_standby=-40s274ms device_idle=-- battery_saver=-- tare=-40s274ms
+    u0a128:
+      #1: Reason=alarm_cancelled elapsed=-1s442ms rtc=2026-11-02 12:39:33.811
+        Snapshot:
+          type=ELAPSED tag=*alarm*:com.google.android.chimera.container.IntentOperationService.SAVED_INTENT
+          policyWhenElapsed: requester=+3649d23h59m51s504ms app_standby=-7s484ms device_idle=-- battery_saver=-8s494ms tare=-8s494ms
+      #2: Reason=alarm_cancelled elapsed=-8s609ms rtc=2026-11-02 12:39:26.644
+        Snapshot:
+          type=ELAPSED tag=*alarm*:com.google.android.gms.gcm.ACTION_CHECK_QUEUE
+          policyWhenElapsed: requester=+7s104ms app_standby=-8s644ms device_idle=-- battery_saver=-8s644ms tare=-8s644ms
+      #3: Reason=alarm_cancelled elapsed=-8s664ms rtc=2026-11-02 12:39:26.589
+        Snapshot:
+          type=ELAPSED tag=*alarm*:com.google.android.gms.gcm.ACTION_CHECK_QUEUE
+          policyWhenElapsed: requester=+7s104ms app_standby=-14s476ms device_idle=-- battery_saver=-15s756ms tare=-15s756ms
+      #4: Reason=alarm_cancelled elapsed=-8s693ms rtc=2026-11-02 12:39:26.560
+        Snapshot:
+          type=ELAPSED tag=*alarm*:com.google.android.chimera.container.IntentOperationService.SAVED_INTENT
+          policyWhenElapsed: requester=+3649d23h59m21s187ms app_standby=-14s476ms device_idle=-- battery_saver=-38s811ms tare=-38s811ms
+      #5: Reason=alarm_cancelled elapsed=-9s682ms rtc=2026-11-02 12:39:25.571
+        Snapshot:
+          type=ELAPSED tag=*alarm*:com.google.android.chimera.container.IntentOperationService.SAVED_INTENT
+          policyWhenElapsed: requester=+3649d23h59m26s864ms app_standby=-14s476ms device_idle=-- battery_saver=-33s136ms tare=-33s136ms
+      #6: Reason=alarm_cancelled elapsed=-9s893ms rtc=2026-11-02 12:39:25.360
+        Snapshot:
+          type=ELAPSED tag=*alarm*:com.google.android.chimera.container.IntentOperationService.SAVED_INTENT
+          policyWhenElapsed: requester=+3649d23h59m43s85ms app_standby=-14s476ms device_idle=-- battery_saver=-16s908ms tare=-16s908ms
+      #7: Reason=alarm_cancelled elapsed=-15s757ms rtc=2026-11-02 12:39:19.496
+        Snapshot:
+          type=ELAPSED tag=*alarm*:com.google.android.gms.gcm.ACTION_CHECK_QUEUE
+          policyWhenElapsed: requester=+7s104ms app_standby=-16s325ms device_idle=-- battery_saver=-16s325ms tare=-16s325ms
+      #8: Reason=alarm_cancelled elapsed=-16s326ms rtc=2026-11-02 12:39:18.927
+        Snapshot:
+          type=ELAPSED tag=*alarm*:com.google.android.gms.gcm.ACTION_CHECK_QUEUE
+          policyWhenElapsed: requester=+7s104ms app_standby=-16s339ms device_idle=-- battery_saver=-16s339ms tare=-16s339ms
+      #9: Reason=alarm_cancelled elapsed=-16s340ms rtc=2026-11-02 12:39:18.913
+        Snapshot:
+          type=ELAPSED tag=*alarm*:com.google.android.gms.gcm.ACTION_CHECK_QUEUE
+          policyWhenElapsed: requester=+7s104ms app_standby=-16s387ms device_idle=-- battery_saver=-16s387ms tare=-16s387ms
+      #10: Reason=alarm_cancelled elapsed=-16s401ms rtc=2026-11-02 12:39:18.852
+        Snapshot:
+          type=ELAPSED tag=*alarm*:com.google.android.gms.gcm.ACTION_CHECK_QUEUE
+          policyWhenElapsed: requester=+7s104ms app_standby=-16s429ms device_idle=-- battery_saver=-16s429ms tare=-16s429ms
+
+  Top Alarms:
+    +222ms running, 3 wakeups, 3 alarms: 1000:android
+      *walarm*:*job.deadline*
+    +220ms running, 0 wakeups, 1 alarms: 1000:android
+      *alarm*:com.android.server.action.NETWORK_STATS_POLL
+    +93ms running, 1 wakeups, 1 alarms: 1073:com.google.android.networkstack
+      *walarm*:DhcpClient.wlan0.KICK
+    +67ms running, 0 wakeups, 1 alarms: 1000:android
+      *alarm*:TIME_TICK
+    +44ms running, 0 wakeups, 1 alarms: 1000:android
+      *alarm*:*job.delay*
+    +41ms running, 1 wakeups, 1 alarms: u0a90:com.android.providers.calendar
+      *walarm*:com.android.providers.calendar.intent.CalendarProvider2
+    +28ms running, 1 wakeups, 1 alarms: u0a169:com.android.systemui
+      *walarm*:ReverseChargingControl
+    +12ms running, 0 wakeups, 1 alarms: u0a128:com.google.android.gms
+      *alarm*:com.google.android.gms.vision.DEPENDENCY
+    +7ms running, 1 wakeups, 1 alarms: u0a128:com.google.android.gms
+      *walarm*:com.google.android.intent.action.GCM_RECONNECT
+    +3ms running, 1 wakeups, 1 alarms: 1073:com.google.android.networkstack
+      *walarm*:DhcpClient.wlan0.TIMEOUT
+
+  Alarm Stats:
+  1000:android +290ms running, 4 wakeups:
+    +222ms 3 wakes 3 alarms, last -10s834ms:
+      *walarm*:*job.deadline*
+    +220ms 0 wakes 1 alarms, last -27s923ms:
+      *alarm*:com.android.server.action.NETWORK_STATS_POLL
+    +67ms 0 wakes 1 alarms, last -35s250ms:
+      *alarm*:TIME_TICK
+    +44ms 0 wakes 1 alarms, last -27s923ms:
+      *alarm*:*job.delay*
+    +2ms 1 wakes 1 alarms, last -10s834ms:
+      *walarm*:WifiHealthMonitor Schedule Post-Boot Detection Timer
+  1073:com.google.android.networkstack +96ms running, 2 wakeups:
+    +93ms 1 wakes 1 alarms, last -39s120ms:
+      *walarm*:DhcpClient.wlan0.KICK
+    +3ms 1 wakes 1 alarms, last -35s204ms:
+      *walarm*:DhcpClient.wlan0.TIMEOUT
+  u0a90:com.android.providers.calendar +41ms running, 1 wakeups:
+    +41ms 1 wakes 1 alarms, last -24s198ms:
+      *walarm*:com.android.providers.calendar.intent.CalendarProvider2
+  u0a128:com.google.android.gms +19ms running, 1 wakeups:
+    +12ms 0 wakes 1 alarms, last -7s487ms:
+      *alarm*:com.google.android.gms.vision.DEPENDENCY
+    +7ms 1 wakes 1 alarms, last -14s478ms:
+      *walarm*:com.google.android.intent.action.GCM_RECONNECT
+  u0a169:com.android.systemui +28ms running, 1 wakeups:
+    +28ms 1 wakes 1 alarms, last -35s495ms:
+      *walarm*:ReverseChargingControl
+
+  Alarm manager stats:
+    REORDER_ALARMS_FOR_STANDBY: count=399, total=27.7ms, avg=0.070ms, max calls/s=204 max dur/s=12.7ms max time=3.8ms
+    HAS_SCHEDULE_EXACT_ALARM: count=127, total=24.9ms, avg=0.196ms, max calls/s=52 max dur/s=17.0ms max time=13.8ms
+    REORDER_ALARMS_FOR_TARE: count=0, total=0.0ms, avg=0.000ms, max calls/s=0 max dur/s=0.0ms max time=0.0ms

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnyro.clock.AlarmConcurrencyTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-02T11:32:46.029Z" hostname="DESKTOP-172AU7B" time="4.408">
+  <properties/>
+  <testcase name="lateSnoozeStopsOnlyItsActiveServiceStart" classname="com.bnyro.clock.AlarmConcurrencyTest" time="3.879"/>
+  <testcase name="mainCrudIoDoesNotDeadlockDelivery" classname="com.bnyro.clock.AlarmConcurrencyTest" time="0.234"/>
+  <testcase name="lateMissingRowStopsOnlyItsOwnServiceStart" classname="com.bnyro.clock.AlarmConcurrencyTest" time="0.058"/>
+  <testcase name="deletionWhileServiceLoadsCannotStartStaleRinging" classname="com.bnyro.clock.AlarmConcurrencyTest" time="0.068"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Intent = Intent { act=com.bnyro.clock.ALARM_ACTION pkg=com.bnyro.clock.debug (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.services.AlarmService$alarmActionReceiver$1@2c3de3b6], context=[android.app.ContextImpl@6069d0ad], intentFilter=[android.content.IntentFilter@34f007ce]]]
+Intent = Intent { cmp=com.bnyro.clock.debug/com.bnyro.clock.util.receivers.PreAlarmReceiver (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.receivers.PreAlarmReceiver@52264bb5], context=[android.app.ContextImpl@6069d0ad], intentFilter=[android.content.IntentFilter@c650916]]]
+Intent = Intent { act=com.bnyro.clock.ALARM_ALERT_CLOSE_ACTION pkg=com.bnyro.clock.debug (has extras) }; Matching wrappers: []
+Intent = Intent { act=com.bnyro.clock.ALARM_ALERT_CLOSE_ACTION pkg=com.bnyro.clock.debug (has extras) }; Matching wrappers: []
+Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@4435b525], context=[android.app.ContextImpl@59bcd4eb], intentFilter=[android.content.IntentFilter@3d93bfa2]]]
+Intent = Intent { act=com.bnyro.clock.ALARM_ACTION pkg=com.bnyro.clock.debug (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.services.AlarmService$alarmActionReceiver$1@1e47f2a0], context=[android.app.ContextImpl@2bdf374e], intentFilter=[android.content.IntentFilter@760a378d]]]
+]]></system-err>
+</testsuite>

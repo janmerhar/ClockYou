@@ -11,6 +11,9 @@ import com.bnyro.clock.domain.model.Alarm
 import com.bnyro.clock.domain.usecase.CreateUpdateDeleteAlarmUseCase
 import com.bnyro.clock.util.location.LocationAlarmScheduler
 import com.bnyro.clock.util.location.LocationPreferences
+import com.bnyro.clock.util.location.LocationAlarmCoordinator
+import com.bnyro.clock.util.location.ReconcileReason
+import com.bnyro.clock.domain.model.HomeLocation
 import com.bnyro.clock.util.services.AlarmService
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
@@ -108,5 +111,52 @@ class LocationAlarmDeviceTest {
         clickAlert("Dismiss")
         await("dismissed location player") { !playerActive() }
         assertFalse(repository.getAlarmById(alarm.id)!!.enabled)
+    }
+
+    @Test fun nativeLocationChangesBeforeCutoffAndFreezesAfterward() = runBlocking {
+        shell("pm grant ${app.packageName} android.permission.ACCESS_COARSE_LOCATION")
+        shell("pm grant ${app.packageName} android.permission.ACCESS_FINE_LOCATION")
+        shell("pm grant ${app.packageName} android.permission.ACCESS_BACKGROUND_LOCATION")
+        shell("appops set com.android.shell android:mock_location allow")
+        shell("cmd location providers add-test-provider network")
+        try {
+            shell("cmd location providers set-test-provider-enabled network true")
+            fun fix(latitude: Double) { shell("cmd location providers set-test-provider-location network --location $latitude,0 --accuracy 10") }
+            LocationPreferences().saveHome(HomeLocation(0.0, 0.0))
+            fix(0.01)
+            val now = ZonedDateTime.now()
+            var normal = now.plusMinutes(35).truncatedTo(ChronoUnit.MINUTES)
+            if (normal.plusMinutes(5).toLocalDate() != normal.toLocalDate()) normal = normal.plusHours(1)
+            val away = normal.plusMinutes(5)
+            val alarm = useCase.createAlarm(Alarm(time = normal.toLocalTime().toNanoOfDay() / 1_000_000,
+                awayTime = away.toLocalTime().toNanoOfDay() / 1_000_000, enabled = true,
+                startDate = normal.toLocalDate().toEpochDay(), label = "Native POC transitions"))
+            created += alarm
+            val manager = app.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            assertEquals(away.toInstant().toEpochMilli(), manager.nextAlarmClock.triggerTime)
+            fix(0.0)
+            LocationAlarmCoordinator.reconcile(app)
+            assertEquals(normal.toInstant().toEpochMilli(), manager.nextAlarmClock.triggerTime)
+            fix(0.01)
+            LocationAlarmCoordinator.reconcile(app)
+            assertEquals(away.toInstant().toEpochMilli(), manager.nextAlarmClock.triggerTime)
+            useCase.deleteAlarm(alarm)
+            created.remove(alarm)
+
+            val frozenNormal = now.plusMinutes(5).truncatedTo(ChronoUnit.MINUTES)
+            val frozenAway = now.plusMinutes(10).truncatedTo(ChronoUnit.MINUTES)
+            val frozen = useCase.createAlarm(Alarm(time = frozenNormal.toLocalTime().toNanoOfDay() / 1_000_000,
+                awayTime = frozenAway.toLocalTime().toNanoOfDay() / 1_000_000, enabled = true,
+                startDate = frozenAway.toLocalDate().toEpochDay(), label = "Native POC frozen"))
+            created += frozen
+            assertEquals(frozenAway.toInstant().toEpochMilli(), manager.nextAlarmClock.triggerTime)
+            fix(0.0)
+            LocationAlarmCoordinator.reconcile(app)
+            assertEquals(frozenAway.toInstant().toEpochMilli(), manager.nextAlarmClock.triggerTime)
+            assertTrue(LocationPreferences().getOccurrence(frozen.id)!!.frozen)
+        } finally {
+            shell("cmd location providers remove-test-provider network")
+            LocationPreferences().clearHome()
+        }
     }
 }

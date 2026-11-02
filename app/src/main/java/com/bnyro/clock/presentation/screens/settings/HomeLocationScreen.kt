@@ -44,7 +44,7 @@ fun HomeLocationScreen(onBack: () -> Unit) {
     var previewLongitude by rememberSaveable { mutableStateOf<Double?>(null) }
     var busy by remember { mutableStateOf(false) }
     var capturing by remember { mutableStateOf(false) }
-    var error by remember { mutableStateOf<String?>(null) }
+    var error by remember { mutableStateOf<Int?>(null) }
     var removeConfirmation by rememberSaveable { mutableStateOf(false) }
     var backgroundExplanation by rememberSaveable { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
@@ -59,10 +59,10 @@ fun HomeLocationScreen(onBack: () -> Unit) {
             capturing = true; error = null
             try {
                 val fix = tracker.captureHome()
-                if (fix == null) error = context.getString(R.string.loc_capture_failed)
+                if (fix == null) error = R.string.loc_capture_failed
                 else { previewLatitude = fix.latitude; previewLongitude = fix.longitude }
             } catch (cancelled: CancellationException) { throw cancelled }
-            catch (_: Exception) { error = context.getString(R.string.loc_capture_failed) }
+            catch (_: Exception) { error = R.string.loc_capture_failed }
             finally { capturing = false }
         }
     }
@@ -80,7 +80,7 @@ fun HomeLocationScreen(onBack: () -> Unit) {
                     home = storage.getHome(); previewLatitude = null; previewLongitude = null
                 }
             } catch (_: Exception) {
-                withContext(Dispatchers.Main) { error = context.getString(R.string.loc_save_failed) }
+                withContext(Dispatchers.Main) { error = R.string.loc_save_failed }
             } finally { withContext(Dispatchers.Main) { busy = false } }
         }
     }
@@ -121,7 +121,7 @@ fun HomeLocationScreen(onBack: () -> Unit) {
                 android.text.format.DateFormat.format("yyyy-MM-dd HH:mm", sample.timestampMillis).toString(), sample.accuracyMeters), style = MaterialTheme.typography.bodySmall)
             if (!status.foregroundPermission) Text(stringResource(R.string.loc_permission_denied))
             else if (!status.networkAvailable) Text(stringResource(R.string.loc_network_unavailable))
-            error?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+            error?.let { Text(stringResource(it), color = MaterialTheme.colorScheme.error) }
             Button(enabled = !busy && !capturing, onClick = {
                 if (tracker.hasForegroundPermission()) capture()
                 else foregroundPermission.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION))

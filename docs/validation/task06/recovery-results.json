@@ -1,0 +1,13 @@
+{
+  "expected_trigger": 1793620620000,
+  "alarm_id": 1,
+  "before": true,
+  "killed_process_pid": "2044",
+  "background-process-killed": true,
+  "exact-denied": true,
+  "exact-granted-without-app-open": true,
+  "foreground-after-background-denial": true,
+  "after-reboot-before-app-open": true,
+  "frozen_record_unchanged": true,
+  "explicit_prepare_and_verify_phases_passed": true
+}
