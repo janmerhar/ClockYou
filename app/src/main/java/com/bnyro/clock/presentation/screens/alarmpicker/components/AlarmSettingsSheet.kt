@@ -29,12 +29,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
@@ -74,6 +76,8 @@ fun AlarmPicker(
     var showSnoozeDialog by remember { mutableStateOf(false) }
     var showVibrationDialog by remember { mutableStateOf(false) }
     var wannadeletequestion by remember { mutableStateOf(false) }
+    var awayTime by rememberSaveable { mutableStateOf(currentAlarm.awayTime) }
+    var showLocationRule by rememberSaveable { mutableStateOf(false) }
 
     var labelColor by remember { mutableIntStateOf(currentAlarm.labelColor) }
     var label by remember { mutableStateOf(currentAlarm.label ?: "") }
@@ -163,6 +167,9 @@ fun AlarmPicker(
             Spacer(modifier = Modifier.height(16.dp))
 
             Column {
+                TextButton(onClick = { showLocationRule = true }) {
+                    Text(if (awayTime == null) stringResource(R.string.loc_rule_off) else stringResource(R.string.loc_away_summary, TimeHelper.millisToFormatted(context, awayTime!!)))
+                }
                 RecurrencePicker(
                     advanced = advanced,
                     startDate = startDate,
@@ -303,13 +310,17 @@ fun AlarmPicker(
                         repeatAnchor = repeatAnchor,
                         endDate = endDate,
                         endOccurrences = endOccurrences,
-                        advanced = advanced
+                        advanced = advanced,
+                        awayTime = awayTime
                     )
                 onSave(alarm)
             }) {
                 Text(text = stringResource(R.string.save))
             }
         }
+    }
+    if (showLocationRule) {
+        LocationRuleSheet(awayTime, onDone = { awayTime = it; showLocationRule = false }, onCancel = { showLocationRule = false })
     }
     if (showRingtoneDialog) {
         RingtonePickerDialog(onDismissRequest = {

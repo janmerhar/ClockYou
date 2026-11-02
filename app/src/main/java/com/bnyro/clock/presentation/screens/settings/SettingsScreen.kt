@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.automirrored.rounded.VolumeUp
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.OpenInNew
@@ -176,6 +177,10 @@ fun SettingsScreen(
         ) {
             val uriHandler = LocalUriHandler.current
             SettingsCategory(stringResource(R.string.general))
+
+            IconPreference(title = stringResource(R.string.loc_home_location), imageVector = Icons.Rounded.Home) {
+                onNavigate(NavRoutes.HomeLocation.route)
+            }
 
             ButtonGroupPref(
                 title = stringResource(R.string.theme),

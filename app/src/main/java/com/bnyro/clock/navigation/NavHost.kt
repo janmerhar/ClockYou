@@ -14,6 +14,7 @@ import com.bnyro.clock.presentation.screens.alarmpicker.AlarmPickerScreen
 import com.bnyro.clock.presentation.screens.clock.model.ClockModel
 import com.bnyro.clock.presentation.screens.permission.PermissionScreen
 import com.bnyro.clock.presentation.screens.settings.SettingsScreen
+import com.bnyro.clock.presentation.screens.settings.HomeLocationScreen
 import com.bnyro.clock.presentation.screens.settings.WidgetsScreen
 import com.bnyro.clock.presentation.screens.settings.model.SettingsModel
 import com.bnyro.clock.presentation.screens.stopwatch.model.StopwatchModel
@@ -72,6 +73,10 @@ fun AppNavHost(
             }, onNavigate = {
                 navController.navigate(it)
             }, settingsModel)
+        }
+
+        composable(NavRoutes.HomeLocation.route) {
+            HomeLocationScreen(onBack = { navController.popBackStack() })
         }
 
         composable(NavRoutes.Widgets.route,

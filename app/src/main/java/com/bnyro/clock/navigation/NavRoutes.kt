@@ -8,6 +8,7 @@ sealed class NavRoutes(
 ) {
     data object Home : NavRoutes("home")
     data object Settings : NavRoutes("settings")
+    data object HomeLocation : NavRoutes("home_location")
     data object AlarmPicker : NavRoutes("alarmPicker") {
         const val ALARM_ID = "alarmId"
         const val ADVANCED = "advanced"

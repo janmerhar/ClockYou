@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- English-only POC controls; translation is deferred for this file only. -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="loc_home_location">Home location</string>
+    <string name="loc_rule">Location rule</string>
+    <string name="loc_rule_off">Location rule: Off</string>
+    <string name="loc_away_summary">Away: %1$s</string>
+    <string name="loc_home_away_summary">Home %1$s · Away %2$s</string>
+    <string name="loc_enable_rule">Enable location rule</string>
+    <string name="loc_away_time">Away time</string>
+    <string name="loc_rule_explanation">Home and unknown location use the normal time. Away uses this time. The choice freezes 30 minutes before the earlier time.</string>
+    <string name="loc_home_hint">Save one Home in Settings → Home location. Location access is optional for ordinary alarms.</string>
+    <string name="loc_done">Done</string>
+    <string name="loc_back">Back</string>
+    <string name="loc_not_set">Home is not set</string>
+    <string name="loc_saved">Home is saved</string>
+    <string name="loc_area">Home area: 300 m radius</string>
+    <string name="loc_coordinates">%1$.5f, %2$.5f</string>
+    <string name="loc_preview">Preview: %1$.5f, %2$.5f</string>
+    <string name="loc_use_current">Use current location</string>
+    <string name="loc_capturing">Finding location…</string>
+    <string name="loc_save_home">Save Home</string>
+    <string name="loc_update_home">Update Home</string>
+    <string name="loc_remove_home">Remove Home</string>
+    <string name="loc_remove">Remove</string>
+    <string name="loc_confirm_remove">Remove the saved Home? Location rules will use the normal alarm time until Home is set again.</string>
+    <string name="loc_refresh">Refresh</string>
+    <string name="loc_status">Status: %1$s</string>
+    <string name="loc_state_home">Home</string>
+    <string name="loc_state_away">Away</string>
+    <string name="loc_state_unknown">Unknown</string>
+    <string name="loc_last_fix">Last fix: %1$s · accuracy %2$.0f m</string>
+    <string name="loc_no_fix">No recent location fix</string>
+    <string name="loc_capture_failed">Could not get a recent, accurate location. Home was kept.</string>
+    <string name="loc_save_failed">Home could not be saved. Please try again.</string>
+    <string name="loc_permission_denied">Location access is unavailable. Ordinary alarms still work.</string>
+    <string name="loc_network_unavailable">Network location is unavailable. Automatic detection will recheck when eligible.</string>
+    <string name="loc_background_access">Allow background detection</string>
+    <string name="loc_background_explanation">Automatic Home/Away detection needs background location. In system location permissions choose “%1$s”. You can decline and keep using ordinary alarms. Android may delay location updates.</string>
+    <string name="loc_allow_all_time">Allow all the time</string>
+    <string name="loc_open_settings">Open settings</string>
+</resources>

@@ -61,3 +61,17 @@ Added pure accuracy-circle classification and zoned cutoff policy, a tracker own
 RED: 8 of 9 initial policy/monitoring tests failed against placeholder behavior. A further permission regression showed cached Home surviving background permission denial; changing it to Unknown made that test pass. GREEN: `.\gradlew.bat :app:testDebugUnitTest :app:assembleDebug` exited 0 (38 seconds): 20 unit tests passed, including the actual 30-second capture timeout, live success cleanup, cancellation cleanup, capture age/accuracy boundaries, provider recovery, no continuous GPS registration, and an unchanged recheck deadline. Task 05 attaches lifecycle/CRUD scheduling reconciliation; no location-triggered ringing behavior is claimed yet.
 
 Commit: `feat(task-03): add sparse native home and away detection`.
+
+## Task 04 — Home screen and rule sheet
+
+Task 03 checkpoint: local/GitHub `master` matched `b1d7b340eb0d2a4a5b44f725a019edf74f786b38`.
+
+Added a separate draft-only Material 3 rule sheet, optional Away time in the parent editor, Home settings navigation, and a Home screen with bounded capture preview, save/update, refresh and confirmed removal. New draft fields use saved state. Capture stops when the screen stops/leaves; Home writes use Application IO scope so navigation does not abandon them. Foreground and background permission flows are separate; Android 11+ background access has an explanation, localized system option label, settings navigation and decline. English-only translation suppression is confined to `location_alarm_strings.xml`.
+
+RED: all 9 UI tests failed against placeholder views/missing entry points. GREEN: `.\gradlew.bat :app:testDebugUnitTest :app:assembleDebug` exited 0 (45 seconds): all 29 unit tests passed. Nine Compose checks cover suggested 10:00, draft-only Done, Cancel/outside dismissal, restoration, parent cancellation, Off clearing Away, Home preview/save/update, failed capture, confirmed removal and denied permission. Two initial harness issues were corrected: wait for the Save operation to re-enable capture before clicking again, and target the sheet root rather than Material's separate tooltip root for outside dismissal.
+
+Native API 34 checks: denied location shows Unknown; captured test GPS coordinates remain a preview until Save; Save/Update persist the shown coordinates; Cancel on removal keeps Home and confirmed Remove clears it. Native Back (after dismissing the input keyboard) discards sheet edits. Done→parent Save→reopen retains Away 10:00; switching Off and saving clears it. Test alarm was disabled afterward. Light and dark Home layouts and dark Home at 1.5× system font scale were inspected. Native emulator GNSS delivered no fixes, so capture tests used Android's shell test GPS provider; this is test-only fixture setup and was removed afterward. No production mock-location control exists. Native evidence is in `docs/validation/task04/`.
+
+The IDE removed obsolete upstream Linux run-target selections during opening/sync; its generated variant was backed up in the ignored execution workspace before restoring that unrelated tracked configuration. Feature files alone enter this checkpoint. Scheduling remains Task 05.
+
+Commit: `feat(task-04): add home settings and location rule editor`.
