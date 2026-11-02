@@ -51,3 +51,13 @@ Commit: `feat(task-02): store home and optional away alarm time`. Actual SHA/rem
 4. Home CRUD screen, location rule sheet and draft/permission behavior.
 5. Serialized scheduling, commitments, delivery and recovery.
 6. Device verification, independent review, APK and handoff.
+
+## Task 03 — Native detection
+
+Task 02 checkpoint: local/GitHub `master` matched `99ac7114d141e18ec36e0eb5682c0e2535065c7a`. The execution helper initially received an unquoted PowerShell `-P` argument; rerunning it with the complete quoted property passed. This was command parsing, not a feature failure.
+
+Added pure accuracy-circle classification and zoned cutoff policy, a tracker owned by the Application, bounded foreground GPS/network capture, cached refresh, optional sparse background network requests and one inexact 30-minute recheck. Registration is serialized on IO, preserves its deadline on repeated callbacks, stops without Home/rules/background permission, and retains the availability recheck when the network provider is disabled. Runtime callbacks finish bounded asynchronous receiver work. The new location permissions are optional and ordinary alarm permission onboarding is unchanged.
+
+RED: 8 of 9 initial policy/monitoring tests failed against placeholder behavior. A further permission regression showed cached Home surviving background permission denial; changing it to Unknown made that test pass. GREEN: `.\gradlew.bat :app:testDebugUnitTest :app:assembleDebug` exited 0 (38 seconds): 20 unit tests passed, including the actual 30-second capture timeout, live success cleanup, cancellation cleanup, capture age/accuracy boundaries, provider recovery, no continuous GPS registration, and an unchanged recheck deadline. Task 05 attaches lifecycle/CRUD scheduling reconciliation; no location-triggered ringing behavior is claimed yet.
+
+Commit: `feat(task-03): add sparse native home and away detection`.

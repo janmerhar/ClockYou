@@ -13,9 +13,15 @@ import com.bnyro.clock.presentation.widgets.DigitalClockWidget
 import com.bnyro.clock.presentation.widgets.VerticalClockWidget
 import com.bnyro.clock.util.NotificationHelper
 import com.bnyro.clock.util.Preferences
+import com.bnyro.clock.util.location.HomeLocationTracker
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 
 class App : Application() {
     lateinit var container: AppContainer
+    val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    val locationTracker by lazy { HomeLocationTracker(this) }
 
     //should work for android 6 OR all higher
     private val safeContext: Context by lazy {
