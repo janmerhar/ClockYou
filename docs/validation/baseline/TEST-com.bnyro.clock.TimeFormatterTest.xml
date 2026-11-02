@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnyro.clock.TimeFormatterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-02T00:01:10.799Z" hostname="DESKTOP-172AU7B" time="22.792">
+  <properties/>
+  <testcase name="displayedTimesFollowTwelveHourSystemSetting" classname="com.bnyro.clock.TimeFormatterTest" time="3.428"/>
+  <testcase name="displayedWorldClockPreservesItsTimeZone" classname="com.bnyro.clock.TimeFormatterTest" time="0.05"/>
+  <testcase name="displayedTimesFollowTwentyFourHourSystemSetting" classname="com.bnyro.clock.TimeFormatterTest" time="0.04"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
