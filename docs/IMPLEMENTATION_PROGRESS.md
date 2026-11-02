@@ -35,9 +35,18 @@ Native smoke test: installed the baseline debug APK on `emulator-5554`, API 34, 
 
 The feature is **not implemented** at this checkpoint. Task 01's documentation is committed as `docs(task-01): record rebuild plan and verified baseline`; its actual local/remote SHA is recorded after committing in the execution ledger and the next progress entry. Android Studio was launched but its project/sync UI could not be verified. No physical-device or overnight trial has run.
 
+## Task 02 — Storage and migration
+
+Task 01 checkpoint: local and GitHub `master` matched `dc3eef0f18aaed3716fecbc3a43b6a7755137661` after its push.
+
+Added nullable `Alarm.awayTime`, schema 16, explicit migration 15→16 supporting both old snooze layouts, Home/sample records, atomic preferences, newest-valid-fix retention and JSON backup runtime filtering/clearing. Home and sample writes persist synchronously; one shared lock protects writers across storage instances. Existing schema fixtures are unchanged. Android test assets use the actual exported schemas.
+
+RED: storage tests ran against placeholder storage and failed 4/5 checks for Home persistence, newest-sample retention, invalid sample handling and backup contents. Native migration with an empty migration failed Room's actual table validation on API 34. GREEN: `.\gradlew.bat :app:testDebugUnitTest :app:assembleDebug :app:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.bnyro.clock.LocationMigrationTest` exited 0 (11 seconds): all 9 unit tests passed; 1 native test passed, checking both schema-15 layouts and preserved label/time/snooze. Old JSON decoding and away-time round-trip passed. Backup tests confirm Home survives and sample/occurrence keys are excluded/cleared, including restore without preferences.
+
+Commit: `feat(task-02): store home and optional away alarm time`. Actual SHA/remote verification follows the commit in the execution ledger/next task entry. Scheduling integration remains Task 05.
+
 ## Remaining tasks
 
-2. Storage, migration, JSON compatibility and backup lifecycle.
 3. Sparse native detection, bounded capture and classification.
 4. Home CRUD screen, location rule sheet and draft/permission behavior.
 5. Serialized scheduling, commitments, delivery and recovery.

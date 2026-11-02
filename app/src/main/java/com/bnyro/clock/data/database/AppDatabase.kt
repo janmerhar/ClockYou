@@ -19,7 +19,7 @@ import com.bnyro.clock.domain.model.TimeZone
 
 @Database(
     entities = [TimeZone::class, Alarm::class],
-    version = 15,
+    version = 16,
     autoMigrations = [
         AutoMigration(
             from = 2,
@@ -58,6 +58,20 @@ abstract class AppDatabase : RoomDatabase() {
         private var INSTANCE: AppDatabase? = null
 
         private const val dbName = "com.bnyro.clock"
+
+        val MIGRATION_15_16 = object : Migration(15, 16) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                val hasSnooze = db.query("PRAGMA table_info(alarms)").use { columns ->
+                    val nameColumn = columns.getColumnIndexOrThrow("name")
+                    var found = false
+                    while (columns.moveToNext()) if (columns.getString(nameColumn) == "snoozedUntil") found = true
+                    found
+                }
+                // Published schema 15 predates the model's snooze column.
+                if (!hasSnooze) db.execSQL("ALTER TABLE alarms ADD COLUMN snoozedUntil INTEGER DEFAULT NULL")
+                db.execSQL("ALTER TABLE alarms ADD COLUMN awayTime INTEGER DEFAULT NULL")
+            }
+        }
 
         private val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(db: SupportSQLiteDatabase) {
@@ -141,7 +155,8 @@ abstract class AppDatabase : RoomDatabase() {
                         MIGRATION_3_4,
                         MIGRATION_7_8,
                         MIGRATION_11_12,
-                        MIGRATION_12_13
+                        MIGRATION_12_13,
+                        MIGRATION_15_16
                     )
                     .build()
                 INSTANCE = instance

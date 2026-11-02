@@ -49,6 +49,7 @@ data class Alarm(
     @ColumnInfo(defaultValue = "NULL") var endDate: Long? = null,
     @ColumnInfo(defaultValue = "NULL") var endOccurrences: Int? = null,
     @ColumnInfo(defaultValue = "0") var advanced: Boolean = false,
+    @ColumnInfo(defaultValue = "NULL") var awayTime: Long? = null,
 ) {
     @Ignore
     @kotlinx.serialization.Transient

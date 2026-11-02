@@ -9,6 +9,7 @@ import com.bnyro.clock.domain.model.ClockBackup
 import com.bnyro.clock.domain.model.TimerSettings
 import com.bnyro.clock.util.AlarmHelper
 import com.bnyro.clock.util.Preferences
+import com.bnyro.clock.util.location.LocationPreferences
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.boolean
@@ -22,7 +23,7 @@ class ClockBackupUseCase(private val context: Context) {
     private val container = (context.applicationContext as App).container
 
     suspend fun capture(activeTimers: List<BackupTimer>): ClockBackup {
-        val preferences = Preferences.instance.all.filterKeys { it != Preferences.savedTimersKey }
+        val preferences = Preferences.instance.all.filterKeys { it != Preferences.savedTimersKey && !LocationPreferences.isRuntimeKey(it) }
             .mapValues { (_, value) ->
                 when (value) {
                     is Boolean -> BackupPreference("boolean", JsonPrimitive(value))
@@ -45,7 +46,7 @@ class ClockBackupUseCase(private val context: Context) {
 
     suspend fun restore(backup: ClockBackup) {
         require(backup.version in 1..2)
-        val preferences = backup.preferences?.mapValues { (_, preference) ->
+        val preferences = backup.preferences?.filterKeys { !LocationPreferences.isRuntimeKey(it) }?.mapValues { (_, preference) ->
             when (preference.type) {
                 "boolean" -> preference.value.jsonPrimitive.boolean
                 "int" -> preference.value.jsonPrimitive.int
@@ -85,6 +86,7 @@ class ClockBackupUseCase(private val context: Context) {
             }
         }
         TimerSettings.setSavedTimers(timers)
+        LocationPreferences().clearRuntimeState()
         addedAlarms.forEach { AlarmHelper.enqueue(context, it) }
     }
 }

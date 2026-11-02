@@ -64,6 +64,7 @@ android {
             isIncludeAndroidResources = true
         }
     }
+    sourceSets["androidTest"].assets.srcDir("schemas")
 }
 
 dependencies {
