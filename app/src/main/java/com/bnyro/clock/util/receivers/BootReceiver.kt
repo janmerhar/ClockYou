@@ -3,46 +3,15 @@ package com.bnyro.clock.util.receivers
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-import androidx.core.os.UserManagerCompat
 import com.bnyro.clock.App
-import com.bnyro.clock.util.AlarmHelper
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
+import com.bnyro.clock.util.location.*
 
 class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val action = intent.action
-        val isValidAction = when (action) {
-            Intent.ACTION_BOOT_COMPLETED,
-            Intent.ACTION_MY_PACKAGE_REPLACED -> true
-            Intent.ACTION_LOCKED_BOOT_COMPLETED -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-            else -> false
-        }
-
-        if (!isValidAction) return
-
-        App.updateGeneratedWidgetPreviews(context)
-        val safeContext = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            if (UserManagerCompat.isUserUnlocked(context)) {
-                context
-            } else {
-                context.createDeviceProtectedStorageContext()
-            }
-        } else {
-            context
-        }
-        val alarmRepository = (safeContext.applicationContext as App).container.alarmRepository
-
-        runBlocking(Dispatchers.IO) {
-            try {
-                val alarms = alarmRepository.getAlarms()
-                alarms.forEach { alarm ->
-                    AlarmHelper.enqueue(safeContext, alarm)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+        if (intent.action !in setOf(Intent.ACTION_BOOT_COMPLETED, Intent.ACTION_LOCKED_BOOT_COMPLETED, Intent.ACTION_MY_PACKAGE_REPLACED)) return
+        alarmWork(context) {
+            App.updateGeneratedWidgetPreviews(context)
+            LocationAlarmCoordinator.reconcile(context, ReconcileReason.RECOVERY)
         }
     }
 }

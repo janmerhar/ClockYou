@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnyro.clock.LocationStorageTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-02T11:00:45.340Z" hostname="DESKTOP-172AU7B" time="0.312">
+  <properties/>
+  <testcase name="backupIncludesHomeButExcludesAndClearsRuntime" classname="com.bnyro.clock.LocationStorageTest" time="0.153"/>
+  <testcase name="homeCreateUpdateRemove" classname="com.bnyro.clock.LocationStorageTest" time="0.041"/>
+  <testcase name="concurrentWritersKeepNewestSample" classname="com.bnyro.clock.LocationStorageTest" time="0.051"/>
+  <testcase name="invalidAndFutureSamplesCannotReplaceGoodFix" classname="com.bnyro.clock.LocationStorageTest" time="0.039"/>
+  <testcase name="oldBackupDefaultsToRuleOff" classname="com.bnyro.clock.LocationStorageTest" time="0.026"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

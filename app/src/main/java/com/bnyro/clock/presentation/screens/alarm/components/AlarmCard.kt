@@ -16,6 +16,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import com.bnyro.clock.util.location.LocationPreferences
+import java.time.Instant
+import java.time.ZoneId
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -48,6 +53,8 @@ fun AlarmCard(
     currentTime: Long
 ) {
     val context = LocalContext.current
+    val revision by LocationPreferences.revision.collectAsState()
+    val trigger = remember(alarm, currentTime, revision) { AlarmHelper.getAlarmTime(alarm) }
 
     ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
@@ -63,7 +70,7 @@ fun AlarmCard(
             Column(
                 modifier = Modifier.weight(1f)
             ) {
-                val millisRemaining = AlarmHelper.getAlarmTime(alarm)?.minus(currentTime)
+                val millisRemaining = trigger?.minus(currentTime)
                 Row(
                     modifier = Modifier
                         .padding(end = 10.dp)
@@ -153,10 +160,15 @@ fun AlarmCard(
                 }
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(
-                    text = TimeHelper.millisToFormatted(context, alarm.time),
+                    text = TimeHelper.millisToFormatted(context, if (alarm.awayTime != null && trigger != null)
+                        Instant.ofEpochMilli(trigger).atZone(ZoneId.systemDefault()).toLocalTime().toNanoOfDay() / 1_000_000 else alarm.time),
                     style = MaterialTheme.typography.headlineLarge,
                     fontSize = 36.sp
                 )
+                alarm.awayTime?.let { away ->
+                    Text(stringResource(R.string.loc_home_away_summary, TimeHelper.millisToFormatted(context, alarm.time),
+                        TimeHelper.millisToFormatted(context, away)), style = MaterialTheme.typography.bodySmall)
+                }
                 Text(
                     text = when {
                         millisRemaining == null -> stringResource(R.string.alarm_never_rings)

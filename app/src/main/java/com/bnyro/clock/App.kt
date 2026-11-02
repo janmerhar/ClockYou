@@ -14,13 +14,17 @@ import com.bnyro.clock.presentation.widgets.VerticalClockWidget
 import com.bnyro.clock.util.NotificationHelper
 import com.bnyro.clock.util.Preferences
 import com.bnyro.clock.util.location.HomeLocationTracker
+import android.util.Log
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 
 class App : Application() {
     lateinit var container: AppContainer
-    val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.IO + CoroutineExceptionHandler { _, error ->
+        Log.e("ClockYou", "Background alarm operation failed", error)
+    })
     val locationTracker by lazy { HomeLocationTracker(this) }
 
     //should work for android 6 OR all higher

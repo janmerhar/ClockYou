@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnyro.clock.LocationAlarmPolicyTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-02T11:00:12.737Z" hostname="DESKTOP-172AU7B" time="0.007">
+  <properties/>
+  <testcase name="accuracyCircleMustFitEntirelyInsideOrOutsideHome" classname="com.bnyro.clock.LocationAlarmPolicyTest" time="0.007"/>
+  <testcase name="cutoffAcrossMidnightAndDst" classname="com.bnyro.clock.LocationAlarmPolicyTest" time="0.0"/>
+  <testcase name="selectHomeAwayUnknownAndOff" classname="com.bnyro.clock.LocationAlarmPolicyTest" time="0.0"/>
+  <testcase name="invalidAbsentFutureAndStaleFixesAreUnknown" classname="com.bnyro.clock.LocationAlarmPolicyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -12,6 +12,7 @@ import com.bnyro.clock.domain.model.AlarmFilters
 import com.bnyro.clock.domain.model.AlarmSortOrder
 import com.bnyro.clock.domain.repository.AlarmRepository
 import com.bnyro.clock.domain.usecase.CreateUpdateDeleteAlarmUseCase
+import com.bnyro.clock.util.location.LocationPreferences
 import com.bnyro.clock.util.Preferences
 import com.bnyro.clock.util.TimeHelper
 import kotlinx.coroutines.delay
@@ -62,8 +63,9 @@ class AlarmModel(application: Application) : AndroidViewModel(application) {
             allAlarms,
             filters,
             sortOrder,
-            currentMinute
-        ) { items, filter, sortOrder, _ ->
+            currentMinute,
+            LocationPreferences.revision
+        ) { items, filter, sortOrder, _, _ ->
             val filtered = items.filter { alarm ->
                 (filter.startTime <= alarm.time && alarm.time <= filter.endTime)
                         && (filter.labelColors.isEmpty() || alarm.labelColor in filter.labelColors)
@@ -82,25 +84,25 @@ class AlarmModel(application: Application) : AndroidViewModel(application) {
         )
 
     fun updateAlarm(alarm: Alarm) {
-        viewModelScope.launch {
+        getApplication<App>().applicationScope.launch {
             createUpdateDeleteAlarmUseCase.updateAlarm(alarm)
         }
     }
 
     fun dismissUpcomingAlarm(alarm: Alarm) {
-        viewModelScope.launch {
+        getApplication<App>().applicationScope.launch {
             createUpdateDeleteAlarmUseCase.dismissUpcomingAlarm(alarm.copy())
         }
     }
 
     fun copyAlarm(alarm: Alarm) {
-        viewModelScope.launch {
+        getApplication<App>().applicationScope.launch {
             createUpdateDeleteAlarmUseCase.createAlarm(alarm.copy(id = 0L))
         }
     }
 
     fun deleteAlarm(alarm: Alarm) {
-        viewModelScope.launch {
+        getApplication<App>().applicationScope.launch {
             createUpdateDeleteAlarmUseCase.deleteAlarm(alarm)
         }
     }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnyro.clock.LocationRuleUiTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-11-02T11:00:43.158Z" hostname="DESKTOP-172AU7B" time="2.178">
+  <properties/>
+  <testcase name="cancelDiscardsSheetDraft" classname="com.bnyro.clock.LocationRuleUiTest" time="0.6"/>
+  <testcase name="parentCancelSavesNothingAndNewFieldSurvivesRotation" classname="com.bnyro.clock.LocationRuleUiTest" time="0.703"/>
+  <testcase name="timezoneRecoveryRefreshesCommittedCountdown" classname="com.bnyro.clock.LocationRuleUiTest" time="0.12"/>
+  <testcase name="ruleDraftSurvivesStateRestoration" classname="com.bnyro.clock.LocationRuleUiTest" time="0.267"/>
+  <testcase name="enableSuggestsTenAndDoneOnlyUpdatesParentDraft" classname="com.bnyro.clock.LocationRuleUiTest" time="0.149"/>
+  <testcase name="outsideDismissDiscardsDraft" classname="com.bnyro.clock.LocationRuleUiTest" time="0.126"/>
+  <testcase name="parentSaveIncludesAwayTimeAndOffClearsIt" classname="com.bnyro.clock.LocationRuleUiTest" time="0.206"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

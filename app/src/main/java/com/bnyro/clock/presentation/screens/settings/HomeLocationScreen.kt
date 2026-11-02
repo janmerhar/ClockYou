@@ -25,6 +25,8 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.bnyro.clock.App
 import com.bnyro.clock.R
 import com.bnyro.clock.domain.model.HomeLocation
+import com.bnyro.clock.util.location.LocationAlarmCoordinator
+import com.bnyro.clock.util.location.ReconcileReason
 import com.bnyro.clock.util.location.LocationPreferences
 import com.bnyro.clock.util.location.LocationState
 import kotlinx.coroutines.*
@@ -49,7 +51,7 @@ fun HomeLocationScreen(onBack: () -> Unit) {
     var captureJob by remember { mutableStateOf<Job?>(null) }
 
     fun refresh() {
-        app.applicationScope.launch { tracker.refresh(); tracker.updateRegistration() }
+        app.applicationScope.launch { LocationAlarmCoordinator.reconcile(app) }
     }
     fun capture() {
         captureJob?.cancel()
@@ -69,8 +71,11 @@ fun HomeLocationScreen(onBack: () -> Unit) {
         // Application scope finishes the short write even after navigating Back.
         app.applicationScope.launch {
             try {
-                if (newHome == null) storage.clearHome() else storage.saveHome(newHome)
-                tracker.refresh(); tracker.updateRegistration()
+                LocationAlarmCoordinator.serialized {
+                    if (newHome == null) storage.clearHome() else storage.saveHome(newHome)
+                    LocationAlarmCoordinator.reconcileLocked(app, ReconcileReason.USER_EDIT)
+                }
+                tracker.updateRegistration()
                 withContext(Dispatchers.Main) {
                     home = storage.getHome(); previewLatitude = null; previewLongitude = null
                 }

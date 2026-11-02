@@ -3,22 +3,18 @@ package com.bnyro.clock.util.receivers
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.bnyro.clock.App
 import com.bnyro.clock.domain.usecase.CreateUpdateDeleteAlarmUseCase
 import com.bnyro.clock.util.AlarmHelper
-import kotlinx.coroutines.runBlocking
-//i really am going overboard with recievers but whatever they cool af
+import com.bnyro.clock.util.location.alarmWork
+
 class DismissUpcomingReceiver : BroadcastReceiver() {
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onReceive(context: Context, intent: Intent?) {
         val id = intent?.getLongExtra(AlarmHelper.EXTRA_ID, -1)?.takeIf { it != -1L } ?: return
-        val alarmRepository = (context.applicationContext as App).container.alarmRepository
-
-        runBlocking {
-            val alarm = alarmRepository.getAlarmById(id) ?: return@runBlocking
-            CreateUpdateDeleteAlarmUseCase(context, alarmRepository).dismissUpcomingAlarm(alarm)
+        alarmWork(context) {
+            val repository = (context.applicationContext as App).container.alarmRepository
+            val alarm = repository.getAlarmById(id) ?: return@alarmWork
+            CreateUpdateDeleteAlarmUseCase(context, repository).dismissUpcomingAlarm(alarm)
         }
     }
 }

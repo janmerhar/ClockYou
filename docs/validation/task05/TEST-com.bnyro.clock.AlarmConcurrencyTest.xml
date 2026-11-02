@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnyro.clock.AlarmConcurrencyTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-02T11:00:05.326Z" hostname="DESKTOP-172AU7B" time="3.946">
+  <properties/>
+  <testcase name="mainCrudIoDoesNotDeadlockDelivery" classname="com.bnyro.clock.AlarmConcurrencyTest" time="3.64"/>
+  <testcase name="deletionWhileServiceLoadsCannotStartStaleRinging" classname="com.bnyro.clock.AlarmConcurrencyTest" time="0.15"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Intent = Intent { act=android.location.PROVIDERS_CHANGED (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.location.HomeLocationReceiver@273aee15], context=[android.app.ContextImpl@4752f004], intentFilter=[android.content.IntentFilter@6c168359]]]
+Intent = Intent { act=com.bnyro.clock.ALARM_ACTION pkg=com.bnyro.clock.debug (has extras) }; Matching wrappers: [Wrapper[receiver=[com.bnyro.clock.util.services.AlarmService$alarmActionReceiver$1@5c90c61c], context=[android.app.ContextImpl@4f269a3b], intentFilter=[android.content.IntentFilter@60c6d03f]]]
+]]></system-err>
+</testsuite>

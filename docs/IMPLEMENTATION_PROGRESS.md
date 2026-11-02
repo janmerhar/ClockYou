@@ -75,3 +75,23 @@ Native API 34 checks: denied location shows Unknown; captured test GPS coordinat
 The IDE removed obsolete upstream Linux run-target selections during opening/sync; its generated variant was backed up in the ignored execution workspace before restoring that unrelated tracked configuration. Feature files alone enter this checkpoint. Scheduling remains Task 05.
 
 Commit: `feat(task-04): add home settings and location rule editor`.
+
+## Task 05 — Scheduling, delivery and recovery
+
+Task 04 checkpoint: local/GitHub `master` matched `3dddaefcd2fbeed637301acdb36cf927409cdced`.
+
+Implemented the deterministic scheduler and serialized IO coordinator, persisted commitments and bounded per-alarm consumption/skip/delivery markers. Automatic work preserves due broadcasts and frozen choices; explicit edits and recovery are distinct paths. Reused recurrence/end-count rules. CRUD refetches under serialization, preserves runtime state during rule edits, and retains explicit enable/disable rearming. Snooze remains independent across midnight. Deletion clears pending alarms, runtime records and notifications and closes matching ringing work. Receivers finish bounded asynchronous work; ringing service actions use coroutine scopes. Home changes, restore, foreground startup/resume, reboot/package update, clock/timezone and exact-permission recovery are connected. Cards show the committed wall time and Home/Away summary; rendering does not schedule alarms.
+
+RED→GREEN evidence includes missing-policy/queue failures, a real Room update gated while Main is paused, the original pending broadcast after startup reconciliation, duplicate delivery, skipped-date fallback, rule edits/removal after consumption, midnight snooze, frozen timezone recovery, late service loading after deletion, and the displayed timezone countdown. Westward travel without an intervening callback and observed clock rollback also had failing regressions before the freeze metadata fix.
+
+Final command: `.\gradlew.bat :app:testDebugUnitTest :app:assembleDebug :app:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.bnyro.clock.LocationAlarmDeviceTest` exited 0 (3m 44s). All 47 unit tests and both API 34 native tests passed. Native ordinary alarm delivery, audible-player state, UI Snooze, second delivery and UI Dismiss were observed; a location rule with Unknown location also rang and dismissed. Actual speaker audibility remains unverified. The native harness initially used an unsupported direct text search through Compose virtual accessibility nodes; walking the real accessibility tree corrected the harness without changing the app's controls. Native evidence is in `docs/validation/task05/`.
+
+Implementation rulings required by the specification:
+
+- Keep one bounded progress record beside each next choice: consumed local date, skipped local date and last delivered trigger. `dismissedAt` alone cannot preserve both a future skip and a consumed date across timezone changes. No history is retained.
+- Extend the occurrence with optional original freeze instant and observed frozen flag, with defaults for old runtime records/three-argument callers. Date/time/config alone cannot preserve a frozen choice after westward travel or clock rollback.
+- Add optional deterministic `ZonedDateTime` inputs to coordinator operations and a standard `Clock` input to CRUD. Production defaults remain the real clock; there is no production test-mode switch.
+- Reconcile application startup from `MainActivity.onResume`; Application construction initializes dependencies/scope, while each receiver handles its own operation. This avoids duplicate constructor/resume scheduling during cold delivery.
+- Bring `LocationAlarmDeviceTest` forward from Task 06 to run Task 05's mandatory native ringing checks, then reuse it for final validation.
+
+Commit: `feat(task-05): integrate safe location-aware alarm scheduling`. Whole-change review, additional native recovery/permission checks, actual reboot verification and final APK handoff remain Task 06.

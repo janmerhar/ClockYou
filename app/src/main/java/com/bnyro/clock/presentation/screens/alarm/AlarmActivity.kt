@@ -12,7 +12,11 @@ import com.bnyro.clock.presentation.screens.ringing.RingingActivity
 import com.bnyro.clock.util.AlarmHelper
 import com.bnyro.clock.util.Preferences
 import com.bnyro.clock.util.services.AlarmService
-import kotlinx.coroutines.runBlocking
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.ZoneId
+import com.bnyro.clock.util.location.LocationAlarmCoordinator
 
 class AlarmActivity : RingingActivity() {
     private var alarm by mutableStateOf(Alarm(0, 0))
@@ -51,19 +55,14 @@ class AlarmActivity : RingingActivity() {
     override fun snooze() = snooze(alarm.snoozeMinutes)
 
     private fun snooze(minutes: Int) {
-        stopService(
-            Intent(
-                this@AlarmActivity.applicationContext,
-                AlarmService::class.java
-            )
-        )
-        AlarmHelper.snooze(
-            this@AlarmActivity,
-            alarm,
-            intent.getLongExtra(AlarmHelper.EXTRA_TRIGGER_TIME, System.currentTimeMillis()),
-            minutes
-        )
-        this@AlarmActivity.finish()
+        val id = alarm.id
+        val ringTime = intent.getLongExtra(AlarmHelper.EXTRA_TRIGGER_TIME, System.currentTimeMillis())
+        (application as App).applicationScope.launch {
+            LocationAlarmCoordinator.snooze(this@AlarmActivity, id, ringTime, minutes)
+            sendBroadcast(Intent(AlarmService.ALARM_INTENT_ACTION).setPackage(packageName)
+                .putExtra(AlarmService.ACTION_EXTRA_KEY, AlarmService.DISMISS_ACTION).putExtra(AlarmHelper.EXTRA_ID, id))
+        }
+        finish()
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -75,9 +74,11 @@ class AlarmActivity : RingingActivity() {
     private fun handleIntent(intent: Intent) {
         val id = intent.getLongExtra(AlarmHelper.EXTRA_ID, -1).takeIf { it != -1L } ?: return
         val alarmRepository = (application as App).container.alarmRepository
-        this.alarm = runBlocking {
-            alarmRepository.getAlarmById(id)
-        } ?: return
+        lifecycleScope.launch {
+            val stored = alarmRepository.getAlarmById(id) ?: return@launch
+            val trigger = intent.getLongExtra(AlarmHelper.EXTRA_TRIGGER_TIME, System.currentTimeMillis())
+            alarm = stored.copy(time = Instant.ofEpochMilli(trigger).atZone(ZoneId.systemDefault()).toLocalTime().toNanoOfDay() / 1_000_000)
+        }
     }
 
     override fun onStart() {

@@ -7,8 +7,9 @@ import com.bnyro.clock.domain.model.BackupPreference
 import com.bnyro.clock.domain.model.BackupTimer
 import com.bnyro.clock.domain.model.ClockBackup
 import com.bnyro.clock.domain.model.TimerSettings
-import com.bnyro.clock.util.AlarmHelper
 import com.bnyro.clock.util.Preferences
+import com.bnyro.clock.util.location.LocationAlarmCoordinator
+import com.bnyro.clock.util.location.ReconcileReason
 import com.bnyro.clock.util.location.LocationPreferences
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -36,7 +37,7 @@ class ClockBackupUseCase(private val context: Context) {
                 }
             }
         return ClockBackup(
-            alarms = container.alarmRepository.getAlarms().map { it.copy(id = 0, snoozedUntil = null) },
+            alarms = container.alarmRepository.getAlarms().map { it.copy(id = 0, snoozedUntil = null, dismissedAt = null) },
             timers = TimerSettings.getSavedTimers().map { it.copy(id = 0) },
             activeTimers = activeTimers,
             timeZones = container.timezoneRepository.getTimezones(),
@@ -45,7 +46,13 @@ class ClockBackupUseCase(private val context: Context) {
     }
 
     suspend fun restore(backup: ClockBackup) {
+        LocationAlarmCoordinator.serialized { restoreLocked(backup) }
+        (context.applicationContext as App).locationTracker.updateRegistration()
+    }
+
+    private suspend fun restoreLocked(backup: ClockBackup) {
         require(backup.version in 1..2)
+        require(backup.alarms.all { it.awayTime == null || it.awayTime in 0 until 86_400_000L })
         val preferences = backup.preferences?.filterKeys { !LocationPreferences.isRuntimeKey(it) }?.mapValues { (_, preference) ->
             when (preference.type) {
                 "boolean" -> preference.value.jsonPrimitive.boolean
@@ -59,9 +66,9 @@ class ClockBackupUseCase(private val context: Context) {
         }
         val timers = (TimerSettings.getSavedTimers().map { it.copy(id = 0) } + backup.timers)
             .distinct()
-        val addedAlarms = container.database.withTransaction {
-            val existingAlarms = container.alarmRepository.getAlarms().map { it.copy(id = 0, snoozedUntil = null) }.toSet()
-            val added = backup.alarms.map { it.copy(id = 0, snoozedUntil = null) }.distinct()
+        container.database.withTransaction {
+            val existingAlarms = container.alarmRepository.getAlarms().map { it.copy(id = 0, snoozedUntil = null, dismissedAt = null) }.toSet()
+            val added = backup.alarms.map { it.copy(id = 0, snoozedUntil = null, dismissedAt = null) }.distinct()
                 .filter { it !in existingAlarms }.map { alarm ->
                     alarm.copy(id = container.alarmRepository.addAlarm(alarm))
                 }
@@ -87,6 +94,6 @@ class ClockBackupUseCase(private val context: Context) {
         }
         TimerSettings.setSavedTimers(timers)
         LocationPreferences().clearRuntimeState()
-        addedAlarms.forEach { AlarmHelper.enqueue(context, it) }
+        LocationAlarmCoordinator.reconcileLocked(context, ReconcileReason.USER_EDIT)
     }
 }

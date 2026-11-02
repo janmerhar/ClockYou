@@ -8,6 +8,8 @@ import com.bnyro.clock.App
 import com.bnyro.clock.domain.model.Alarm
 import com.bnyro.clock.domain.usecase.CreateUpdateDeleteAlarmUseCase
 import com.bnyro.clock.navigation.NavRoutes
+import com.bnyro.clock.util.AlarmHelper
+import kotlinx.coroutines.withContext
 import com.bnyro.clock.util.TimeHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,19 +37,21 @@ class AlarmPickerModel(application: Application, savedStateHandle: SavedStateHan
     }
 
     fun createAlarm(alarm: Alarm) {
-        viewModelScope.launch {
-            createUpdateDeleteAlarmUseCase.createAlarm(alarm)
+        getApplication<App>().applicationScope.launch {
+            val saved = createUpdateDeleteAlarmUseCase.createAlarm(alarm)
+            withContext(Dispatchers.Main) { AlarmHelper.showAlarmScheduledToast(getApplication(), saved) }
         }
     }
 
     fun updateAlarm(alarm: Alarm) {
-        viewModelScope.launch {
-            createUpdateDeleteAlarmUseCase.updateAlarm(alarm)
+        getApplication<App>().applicationScope.launch {
+            val saved = createUpdateDeleteAlarmUseCase.updateAlarm(alarm)
+            if (saved != null) withContext(Dispatchers.Main) { AlarmHelper.showAlarmScheduledToast(getApplication(), saved) }
         }
     }
 
     fun deleteAlarm(alarm: Alarm) {
-        viewModelScope.launch {
+        getApplication<App>().applicationScope.launch {
             createUpdateDeleteAlarmUseCase.deleteAlarm(alarm)
         }
     }

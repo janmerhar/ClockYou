@@ -20,7 +20,8 @@ import com.bnyro.clock.domain.model.WeekStart
 import com.bnyro.clock.ui.MainActivity
 import com.bnyro.clock.util.receivers.AlarmReceiver
 import com.bnyro.clock.util.receivers.PreAlarmReceiver
-import kotlinx.coroutines.runBlocking
+import com.bnyro.clock.util.location.LocationAlarmScheduler
+import com.bnyro.clock.util.location.LocationPreferences
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -83,7 +84,8 @@ object AlarmHelper {
 
     @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("ScheduleExactAlarm")
-    private fun schedule(context: Context, alarm: Alarm, triggerTime: Long) {
+    internal fun schedule(context: Context, alarm: Alarm, triggerTime: Long) {
+        if (!Permission.AlarmPermission.hasPermission(context)) return
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         val alarmInfo = AlarmManager.AlarmClockInfo(
@@ -179,6 +181,7 @@ object AlarmHelper {
 
     fun getAlarmTime(alarm: Alarm, skipToday: Boolean = false): Long? {
         alarm.snoozedUntil?.let { return it }
+        if (alarm.awayTime != null) return LocationAlarmScheduler.getCommittedTrigger(alarm)
         val (hours, minutes, _, _) = TimeHelper.millisToTime(alarm.time)
         return getNextOccurrence(alarm, skipToday)
             ?.atTime(hours, minutes)
@@ -193,9 +196,8 @@ object AlarmHelper {
      * @return the day the alarm rings next, skipping the occurrence the user dismissed upfront,
      * or null when its repetition never lets it ring.
      */
-    fun getNextOccurrence(alarm: Alarm, skipToday: Boolean = false): LocalDate? {
+    fun getNextOccurrence(alarm: Alarm, skipToday: Boolean = false, now: LocalDateTime = LocalDateTime.now()): LocalDate? {
         val (hours, minutes, _, _) = TimeHelper.millisToTime(alarm.time)
-        val now = LocalDateTime.now()
         val hasEventPassed = now.toLocalTime()
             .truncatedTo(ChronoUnit.MINUTES) >= LocalTime.of(hours, minutes)
         val earliestDate = if (skipToday || hasEventPassed) {
@@ -204,23 +206,21 @@ object AlarmHelper {
             now.toLocalDate()
         }
 
-        val occurrence =
-            occurrenceOnOrAfter(alarm, maxOf(earliestDate, LocalDate.ofEpochDay(alarm.startDate)))
-                ?: return null
-        val dismissedOccurrence = alarm.dismissedAt?.let {
-            Instant.ofEpochMilli(it).atZone(ZoneId.systemDefault()).toLocalDate()
+        val progress = LocationPreferences().getProgress(alarm.id)
+        var from = maxOf(earliestDate, LocalDate.ofEpochDay(alarm.startDate))
+        while (true) {
+            val occurrence = occurrenceOnOrAfter(alarm, from) ?: return null
+            if (!LocationAlarmScheduler.excluded(alarm, occurrence, ZoneId.systemDefault(), progress)) return occurrence
+            from = occurrence.plusDays(1)
         }
-        if (skipToday || occurrence != dismissedOccurrence) return occurrence
-
-        return occurrenceOnOrAfter(alarm, occurrence.plusDays(1))
     }
 
     /**
      * @return the day the repetition that rings next begins on. Arming an alarm anchors it here
      * rather than at the occurrence itself, which would shift every later repetition.
      */
-    fun getNextRepetitionStart(alarm: Alarm): LocalDate? =
-        getNextOccurrence(alarm)?.let { runStartsOnOrBefore(alarm, it).first() }
+    fun getNextRepetitionStart(alarm: Alarm, now: LocalDateTime = LocalDateTime.now()): LocalDate? =
+        getNextOccurrence(alarm, now = now)?.let { runStartsOnOrBefore(alarm, it).first() }
 
     /**
      * @return the last day the repetition the alarm begins with rings on, or null when its
@@ -251,6 +251,7 @@ object AlarmHelper {
      * whose repetition never lets it ring has not ended, it simply stays silent.
      */
     fun hasRecurrenceEnded(alarm: Alarm): Boolean {
+        if (alarm.awayTime != null && LocationAlarmScheduler.getCommittedTrigger(alarm) != null) return false
         val nextOccurrence = getNextOccurrence(alarm) ?: return false
         alarm.endDate?.let { if (nextOccurrence > LocalDate.ofEpochDay(it)) return true }
         alarm.endOccurrences?.let { count ->
@@ -374,27 +375,12 @@ object AlarmHelper {
         return occurrence
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
-    fun snooze(context: Context, oldAlarm: Alarm, ringTime: Long, snoozeMinutes: Int): Long {
-        val now = System.currentTimeMillis()
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = ringTime
-        calendar.add(Calendar.MINUTE, snoozeMinutes)
-        calendar.set(Calendar.SECOND, 0)
-        calendar.set(Calendar.MILLISECOND, 0)
-        if (calendar.timeInMillis <= now) {
-            calendar.timeInMillis = now
-            calendar.add(Calendar.MINUTE, 1)
-            calendar.set(Calendar.SECOND, 0)
-            calendar.set(Calendar.MILLISECOND, 0)
-        }
-        val alarm = oldAlarm.copy(snoozedUntil = calendar.timeInMillis)
-        runBlocking {
-            (context.applicationContext as App).container.alarmRepository.updateAlarm(alarm)
-        }
-        enqueue(context, alarm)
-        return calendar.timeInMillis
-    }
+    internal fun withinEnd(alarm: Alarm, date: LocalDate): Boolean =
+        (alarm.endDate == null || date.toEpochDay() <= alarm.endDate!!) &&
+            (alarm.endOccurrences == null || (alarm.endOccurrences!! > 0 && lastOccurrence(alarm, alarm.endOccurrences!!)?.let { date <= it } == true))
+
+    suspend fun snooze(context: Context, oldAlarm: Alarm, ringTime: Long, snoozeMinutes: Int): Long? =
+        com.bnyro.clock.util.location.LocationAlarmCoordinator.snooze(context, oldAlarm.id, ringTime, snoozeMinutes)
     /**
      * @return the days of the week mapped to an index 0-Sunday, 1-Monday, ..., 6-Saturday.
      * The list order is only for presentation and follows the user's preference or locale without

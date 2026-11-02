@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuites tests="2" failures="0" errors="0" skipped="0" time="0.000" timestamp="2026-11-02T11:00:02" hostname="localhost">
+  <testsuite name="com.bnyro.clock.LocationAlarmDeviceTest" tests="2" failures="0" errors="0" skipped="0" time="171.079" timestamp="2026-11-02T11:00:02" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="ordinaryAlarmRingsSnoozesAndDismisses" classname="com.bnyro.clock.LocationAlarmDeviceTest" time="111.571" />
+    <testcase name="locationRuleWithUnknownLocationStillRings" classname="com.bnyro.clock.LocationAlarmDeviceTest" time="59.508" />
+  </testsuite>
+</testsuites>

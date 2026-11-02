@@ -29,6 +29,9 @@ import com.bnyro.clock.presentation.screens.settings.model.SettingsModel
 import com.bnyro.clock.presentation.screens.stopwatch.model.StopwatchModel
 import com.bnyro.clock.presentation.screens.timer.model.TimerModel
 import com.bnyro.clock.ui.theme.ClockYouTheme
+import com.bnyro.clock.App
+import com.bnyro.clock.util.location.LocationAlarmCoordinator
+import kotlinx.coroutines.launch
 import com.bnyro.clock.util.Preferences
 import com.bnyro.clock.util.ThemeUtil
 import com.bnyro.clock.util.services.StopwatchService
@@ -141,6 +144,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (application as App).applicationScope.launch { LocationAlarmCoordinator.reconcile(this@MainActivity) }
     }
 
     override fun onStart() {
